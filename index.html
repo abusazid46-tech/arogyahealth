@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ArogyaPath – Rural Healthcare, Arunachal Pradesh</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --teal:       #0abf8e;
+      --teal-light: #12dba8;
+      --teal-dark:  #07856a;
+      --navy:       #0a1628;
+      --navy2:      #112040;
+      --glass-bg:   rgba(255,255,255,0.07);
+      --glass-border: rgba(255,255,255,0.15);
+      --text-muted-custom: rgba(255,255,255,0.6);
+      --card-hover-border: #0abf8e;
+      --price-gold: #f5c842;
+    }
+
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Sora', sans-serif; }
+
+    /* ── ANIMATED BG MESH ── */
+    .mesh-bg {
+      position: fixed; inset: 0; z-index: -1; overflow: hidden;
+      background: linear-gradient(135deg, #071120 0%, #0a1628 50%, #0d1f3c 100%);
+    }
+    .mesh-bg::before, .mesh-bg::after {
+      content: ''; position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.18; animation: floatBlob 12s ease-in-out infinite alternate;
+    }
+    .mesh-bg::before {
+      width: 600px; height: 600px; top: -150px; left: -150px;
+      background: radial-gradient(circle, #0abf8e, transparent 70%);
+    }
+    .mesh-bg::after {
+      width: 500px; height: 500px; bottom: -120px; right: -120px;
+      background: radial-gradient(circle, #0d6efd, transparent 70%);
+      animation-delay: -6s;
+    }
+    @keyframes floatBlob {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(60px,40px) scale(1.1); }
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(10,22,40,0.7) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 14px 0;
+      transition: background 0.3s;
+    }
+    .navbar-brand {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 1.35rem;
+      color: #fff !important;
+      letter-spacing: -0.5px;
+    }
+    .navbar-brand span { color: var(--teal); }
+    .nav-link {
+      color: rgba(255,255,255,0.75) !important;
+      font-weight: 500; font-size: 0.92rem;
+      position: relative; padding: 6px 14px !important;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 0; left: 14px; right: 14px;
+      height: 2px; background: var(--teal); border-radius: 2px;
+      transform: scaleX(0); transition: transform 0.3s;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff !important; }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .btn-nav-cta {
+      background: var(--teal); color: #fff !important; border-radius: 30px;
+      padding: 7px 22px !important; font-weight: 600; font-size: 0.88rem;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .btn-nav-cta:hover { background: var(--teal-light); box-shadow: 0 0 18px rgba(10,191,142,0.4); }
+
+    /* ── GLASS CARD ── */
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+    }
+    .glass-card:hover {
+      border-color: var(--card-hover-border);
+      box-shadow: 0 0 28px rgba(10,191,142,0.25), 0 8px 32px rgba(0,0,0,0.3);
+      transform: translateY(-6px);
+    }
+
+    /* ── SECTION HELPERS ── */
+    section { padding: 90px 0; }
+    .section-label {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.2;
+    }
+    .teal { color: var(--teal); }
+    .divider-teal {
+      width: 56px; height: 4px; background: var(--teal);
+      border-radius: 4px; margin: 16px 0 32px;
+    }
+
+    /* ── PAGE SECTIONS (SPA) ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ════════════════════════════════
+       HOME PAGE
+    ════════════════════════════════ */
+    #home-hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(10,191,142,0.12); border: 1px solid rgba(10,191,142,0.3);
+      color: var(--teal); font-size: 0.82rem; font-weight: 600;
+      padding: 6px 16px; border-radius: 30px; margin-bottom: 24px;
+    }
+    .hero-badge span.dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.4); }
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 800; line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-subtitle {
+      font-size: 1.08rem; color: var(--text-muted-custom);
+      max-width: 520px; line-height: 1.75; margin-bottom: 36px;
+    }
+    .btn-teal {
+      background: var(--teal); color: #fff; border: none;
+      padding: 14px 32px; border-radius: 50px; font-weight: 700;
+      font-size: 0.95rem; transition: all 0.3s; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-teal:hover {
+      background: var(--teal-light);
+      box-shadow: 0 0 28px rgba(10,191,142,0.45);
+      transform: translateY(-2px);
+    }
+    .btn-outline-glass {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: #fff; padding: 14px 28px; border-radius: 50px;
+      font-weight: 600; font-size: 0.95rem; transition: all 0.3s; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline-glass:hover {
+      border-color: var(--teal); color: var(--teal);
+      background: rgba(10,191,142,0.07);
+    }
+
+    /* HERO STATS */
+    .hero-stat-row { display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
+    .hero-stat { border-left: 2px solid rgba(10,191,142,0.4); padding-left: 16px; }
+    .hero-stat .num { font-family: 'Sora', sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--teal); }
+    .hero-stat .lbl { font-size: 0.8rem; color: var(--text-muted-custom); margin-top: 2px; }
+
+    /* HERO IMAGE / CARD VISUAL */
+    .hero-visual {
+      position: relative; display: flex; justify-content: center; align-items: center;
+    }
+    .hero-img-wrap {
+      width: 100%; max-width: 440px; aspect-ratio: 4/5;
+      border-radius: 28px; overflow: hidden; position: relative;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 6s ease;
+    }
+    .hero-img-wrap:hover img { transform: scale(1.05); }
+    .hero-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.7) 0%, transparent 60%);
+    }
+    .floating-chip {
+      position: absolute;
+      background: rgba(10,22,40,0.85);
+      border: 1px solid rgba(10,191,142,0.4);
+      backdrop-filter: blur(12px); border-radius: 16px; padding: 12px 18px;
+      font-size: 0.82rem; font-weight: 600; color: #fff;
+      display: flex; align-items: center; gap: 10px; white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .chip-icon { font-size: 1.3rem; color: var(--teal); }
+    .chip1 { top: 28px; left: -50px; animation: chipFloat 4s ease-in-out infinite; }
+    .chip2 { bottom: 60px; left: -60px; animation: chipFloat 4s ease-in-out infinite 2s; }
+    .chip3 { top: 50%; right: -60px; animation: chipFloat 4s ease-in-out infinite 1s; }
+    @keyframes chipFloat {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* SERVICES SECTION */
+    .service-icon-wrap {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(10,191,142,0.12); border: 1px solid rgba(10,191,142,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: var(--teal); margin-bottom: 18px;
+      transition: background 0.3s;
+    }
+    .glass-card:hover .service-icon-wrap {
+      background: rgba(10,191,142,0.2);
+    }
+
+    /* PRICING CARD */
+    .price-card-free { border-color: rgba(255,255,255,0.12) !important; }
+    .price-card-paid {
+      border-color: var(--price-gold) !important;
+      box-shadow: 0 0 32px rgba(245,200,66,0.15) !important;
+    }
+    .price-badge {
+      font-size: 2.6rem; font-weight: 800; font-family: 'Sora', sans-serif;
+    }
+    .price-badge sup { font-size: 1.2rem; vertical-align: super; }
+    .price-feature { font-size: 0.88rem; color: rgba(255,255,255,0.7); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .price-feature:last-child { border-bottom: none; }
+
+    /* DISEASE TAGS */
+    .disease-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 30px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.83rem; font-weight: 500; cursor: pointer;
+      transition: all 0.25s; margin: 4px;
+    }
+    .disease-tag:hover, .disease-tag.active {
+      background: rgba(10,191,142,0.15); border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* FORM SECTION */
+    .form-glass input, .form-glass select, .form-glass textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff; border-radius: 12px; padding: 13px 18px;
+      font-size: 0.93rem; width: 100%; margin-bottom: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none; font-family: 'DM Sans', sans-serif;
+    }
+    .form-glass input::placeholder,
+    .form-glass textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .form-glass input:focus, .form-glass select:focus, .form-glass textarea:focus {
+      border-color: var(--teal); box-shadow: 0 0 0 3px rgba(10,191,142,0.15);
+    }
+    .form-glass select option { background: var(--navy2); color: #fff; }
+    .form-label-custom { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.6); margin-bottom: 6px; letter-spacing: 0.5px; }
+
+    /* TESTIMONIALS */
+    .stars { color: var(--price-gold); font-size: 0.9rem; letter-spacing: 2px; }
+    .avatar-ring {
+      width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+      border: 2px solid var(--teal);
+    }
+    .avatar-ring img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ABOUT PAGE */
+    .team-card .avatar-lg {
+      width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--teal); margin: 0 auto 14px;
+    }
+    .team-card .avatar-lg img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* CONTACT PAGE */
+    .contact-info-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .contact-info-item:last-child { border-bottom: none; }
+    .ci-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: rgba(10,191,142,0.1); border: 1px solid rgba(10,191,142,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: var(--teal);
+    }
+
+    /* WHATSAPP CTA */
+    .wa-cta-box {
+      background: linear-gradient(135deg, rgba(37,211,102,0.12), rgba(37,211,102,0.05));
+      border: 1px solid rgba(37,211,102,0.3); border-radius: 20px;
+      padding: 32px; text-align: center;
+    }
+    .btn-wa {
+      background: #25d366; color: #fff; border: none;
+      padding: 14px 32px; border-radius: 50px; font-weight: 700;
+      font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;
+      transition: all 0.3s; cursor: pointer; text-decoration: none;
+    }
+    .btn-wa:hover {
+      background: #1ebe5d; box-shadow: 0 0 28px rgba(37,211,102,0.45);
+      transform: translateY(-2px); color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(5,12,25,0.95);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 56px 0 28px;
+    }
+    .footer-logo { font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1.3rem; }
+    .footer-logo span { color: var(--teal); }
+    .footer-link {
+      color: rgba(255,255,255,0.5); font-size: 0.88rem; text-decoration: none;
+      display: block; margin-bottom: 8px; transition: color 0.3s;
+    }
+    .footer-link:hover { color: var(--teal); }
+    .footer-heading { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .social-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 1rem; transition: all 0.3s;
+      text-decoration: none; margin-right: 8px;
+    }
+    .social-icon:hover { background: rgba(10,191,142,0.12); border-color: var(--teal); color: var(--teal); }
+
+    /* ── FLOATING AI BOT ── */
+    #ai-bot-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(10,191,142,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: #fff;
+      animation: botPulse 3s ease-in-out infinite;
+      transition: transform 0.3s;
+    }
+    #ai-bot-btn:hover { transform: scale(1.1); }
+    @keyframes botPulse {
+      0%,100% { box-shadow: 0 4px 24px rgba(10,191,142,0.5); }
+      50% { box-shadow: 0 4px 36px rgba(10,191,142,0.8); }
+    }
+    #ai-chat-window {
+      position: fixed; bottom: 100px; right: 28px; z-index: 9998;
+      width: 340px; max-height: 480px;
+      background: rgba(10,22,40,0.97); backdrop-filter: blur(24px);
+      border: 1px solid rgba(10,191,142,0.3); border-radius: 24px;
+      display: none; flex-direction: column; overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+    }
+    #ai-chat-window.open { display: flex; }
+    .chat-header {
+      background: linear-gradient(135deg, rgba(10,191,142,0.2), rgba(10,191,142,0.05));
+      border-bottom: 1px solid rgba(10,191,142,0.2);
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .chat-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #fff; flex-shrink: 0;
+    }
+    .chat-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9rem; }
+    .chat-subtitle { font-size: 0.72rem; color: var(--teal); margin-top: 2px; }
+    .chat-close {
+      margin-left: auto; background: none; border: none;
+      color: rgba(255,255,255,0.4); font-size: 1.2rem; cursor: pointer;
+      transition: color 0.2s;
+    }
+    .chat-close:hover { color: #fff; }
+    #chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+      scrollbar-width: thin; scrollbar-color: rgba(10,191,142,0.2) transparent;
+    }
+    .msg {
+      max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.85rem; line-height: 1.5;
+    }
+    .msg.bot { background: rgba(10,191,142,0.12); border: 1px solid rgba(10,191,142,0.2); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .msg.user { background: var(--teal); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .chat-input-wrap {
+      padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; gap: 8px; align-items: center;
+    }
+    #chat-input {
+      flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: #fff; border-radius: 30px; padding: 10px 16px; font-size: 0.85rem; outline: none;
+      transition: border-color 0.3s; font-family: 'DM Sans', sans-serif;
+    }
+    #chat-input:focus { border-color: var(--teal); }
+    #chat-send {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--teal);
+      border: none; cursor: pointer; color: #fff; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s, transform 0.2s;
+    }
+    #chat-send:hover { background: var(--teal-light); transform: scale(1.1); }
+    .typing-dots span {
+      display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal); margin: 0 2px;
+      animation: typDot 1.2s ease-in-out infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typDot { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
+
+    /* QUICK REPLIES */
+    .quick-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
+    .qchip {
+      font-size: 0.78rem; padding: 5px 12px; border-radius: 20px;
+      background: rgba(10,191,142,0.1); border: 1px solid rgba(10,191,142,0.25);
+      color: var(--teal); cursor: pointer; transition: all 0.2s;
+    }
+    .qchip:hover { background: rgba(10,191,142,0.2); }
+
+    /* SCROLL FADE-IN */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* MARQUEE STRIP */
+    .marquee-wrap {
+      overflow: hidden; white-space: nowrap;
+      background: rgba(10,191,142,0.07); border-top: 1px solid rgba(10,191,142,0.12); border-bottom: 1px solid rgba(10,191,142,0.12);
+      padding: 14px 0;
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .marquee-inner span {
+      font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.45);
+      letter-spacing: 1px; margin: 0 40px;
+    }
+    .marquee-inner span i { color: var(--teal); margin-right: 8px; }
+    @keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .chip1,.chip2,.chip3 { display: none; }
+      .hero-img-wrap { max-width: 320px; aspect-ratio: 1/1; }
+      #ai-chat-window { width: calc(100vw - 40px); right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ MESH BG ═══════════════ -->
+<div class="mesh-bg"></div>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#" onclick="showPage('home')">
+      <i class="bi bi-heart-pulse-fill me-2" style="color:var(--teal)"></i>Arogya<span>Path</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link active" href="#" id="nav-home" onclick="showPage('home')">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="nav-about" onclick="showPage('about')">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="nav-testimonials" onclick="showPage('testimonials')">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="nav-contact" onclick="showPage('contact')">Contact</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link btn-nav-cta" href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('book-section').scrollIntoView({behavior:'smooth'}),100)">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="home-hero">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6">
+          <div class="hero-badge"><span class="dot"></span> Serving Arunachal Pradesh</div>
+          <h1 class="hero-title">
+            Quality Healthcare <em>at Your Doorstep</em> — Anywhere
+          </h1>
+          <p class="hero-subtitle">
+            Free online doctor consultations and affordable home health visits for the people of rural Arunachal Pradesh. No travel. No waiting. Just care.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <button class="btn-teal" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
+              <i class="bi bi-calendar2-check"></i> Book Free Consultation
+            </button>
+            <a class="btn-outline-glass" href="https://wa.me/917002107673?text=Hello%2C%20I%20need%20a%20free%20health%20consultation." target="_blank">
+              <i class="bi bi-whatsapp"></i> WhatsApp Us
+            </a>
+          </div>
+          <div class="hero-stat-row">
+            <div class="hero-stat"><div class="num">5,200+</div><div class="lbl">Patients Served</div></div>
+            <div class="hero-stat"><div class="num">38+</div><div class="lbl">Districts Covered</div></div>
+            <div class="hero-stat"><div class="num">₹0</div><div class="lbl">Online Consult Fee</div></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="hero-visual">
+            <div class="hero-img-wrap">
+              <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80" alt="Doctor consultation" loading="lazy"/>
+              <div class="hero-img-overlay"></div>
+            </div>
+            <div class="floating-chip chip1">
+              <span class="chip-icon"><i class="bi bi-shield-check"></i></span>
+              <div><div style="font-size:0.78rem;color:var(--teal)">Verified Doctors</div><div>MBBS + MD Certified</div></div>
+            </div>
+            <div class="floating-chip chip2">
+              <span class="chip-icon"><i class="bi bi-house-heart"></i></span>
+              <div><div style="font-size:0.78rem;color:var(--teal)">Home Visit</div><div>Only ₹800</div></div>
+            </div>
+            <div class="floating-chip chip3">
+              <span class="chip-icon"><i class="bi bi-telephone-inbound"></i></span>
+              <div><div style="font-size:0.78rem;color:var(--teal)">24/7 Support</div><div>WhatsApp Available</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-inner">
+      <span><i class="bi bi-check-circle-fill"></i>Free Online Consultation</span>
+      <span><i class="bi bi-check-circle-fill"></i>Home Visits at ₹800</span>
+      <span><i class="bi bi-check-circle-fill"></i>General Medicine</span>
+      <span><i class="bi bi-check-circle-fill"></i>Women's Health</span>
+      <span><i class="bi bi-check-circle-fill"></i>Child Health</span>
+      <span><i class="bi bi-check-circle-fill"></i>Diabetes Care</span>
+      <span><i class="bi bi-check-circle-fill"></i>Mental Wellness</span>
+      <span><i class="bi bi-check-circle-fill"></i>WhatsApp Booking</span>
+      <span><i class="bi bi-check-circle-fill"></i>Free Online Consultation</span>
+      <span><i class="bi bi-check-circle-fill"></i>Home Visits at ₹800</span>
+      <span><i class="bi bi-check-circle-fill"></i>General Medicine</span>
+      <span><i class="bi bi-check-circle-fill"></i>Women's Health</span>
+      <span><i class="bi bi-check-circle-fill"></i>Child Health</span>
+      <span><i class="bi bi-check-circle-fill"></i>Diabetes Care</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Healthcare Built for <span class="teal">Rural India</span></h2>
+        <div class="divider-teal mx-auto"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="glass-card p-4 h-100">
+            <div class="service-icon-wrap"><i class="bi bi-laptop"></i></div>
+            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">Free Online Consult</h5>
+            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Talk to a certified doctor via video or chat — completely free. Available 7 days a week for rural communities.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-up" style="transition-delay:0.1s">
+          <div class="glass-card p-4 h-100">
+            <div class="service-icon-wrap"><i class="bi bi-house-heart-fill"></i></div>
+            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">Doorstep Visit</h5>
+            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">A qualified health worker visits your home for check-ups, blood tests & basic treatment. Just ₹800 per visit.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-up" style="transition-delay:0.2s">
+          <div class="glass-card p-4 h-100">
+            <div class="service-icon-wrap"><i class="bi bi-whatsapp"></i></div>
+            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">WhatsApp Health Line</h5>
+            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Send your symptoms, photos or reports on WhatsApp and get a doctor's response within 2 hours.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-up" style="transition-delay:0.3s">
+          <div class="glass-card p-4 h-100">
+            <div class="service-icon-wrap"><i class="bi bi-capsule"></i></div>
+            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">Medicine Delivery</h5>
+            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Prescription medicines delivered to your village. Partnered with government PHCs and Jan Aushadhi centers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISEASE CATEGORIES -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="glass-card p-5 fade-up">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-4">
+            <div class="section-label">Specialties</div>
+            <h3 class="section-title" style="font-size:1.9rem">We Cover <span class="teal">All Common</span> Conditions</h3>
+            <div class="divider-teal"></div>
+            <p style="color:var(--text-muted-custom);font-size:0.9rem;line-height:1.7">From everyday fevers to chronic diseases — our doctors handle it all. Select a condition to consult.</p>
+            <button class="btn-teal mt-3" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
+              <i class="bi bi-calendar-check"></i> Book Now
+            </button>
+          </div>
+          <div class="col-lg-8">
+            <div>
+              <span class="disease-tag"><i class="bi bi-thermometer-half"></i> Fever & Flu</span>
+              <span class="disease-tag"><i class="bi bi-lungs"></i> Respiratory</span>
+              <span class="disease-tag"><i class="bi bi-droplet-half"></i> Diabetes</span>
+              <span class="disease-tag"><i class="bi bi-heart-pulse"></i> Hypertension</span>
+              <span class="disease-tag"><i class="bi bi-person-hearts"></i> Women's Health</span>
+              <span class="disease-tag"><i class="bi bi-baby"></i> Child Health</span>
+              <span class="disease-tag"><i class="bi bi-emoji-smile"></i> Mental Wellness</span>
+              <span class="disease-tag"><i class="bi bi-eye"></i> Eye Care</span>
+              <span class="disease-tag"><i class="bi bi-patch-question"></i> Skin Issues</span>
+              <span class="disease-tag"><i class="bi bi-bandaid"></i> Wound Care</span>
+              <span class="disease-tag"><i class="bi bi-activity"></i> Joint Pain</span>
+              <span class="disease-tag"><i class="bi bi-moon-stars"></i> Sleep Issues</span>
+              <span class="disease-tag"><i class="bi bi-virus"></i> Malaria / Typhoid</span>
+              <span class="disease-tag"><i class="bi bi-clipboard2-pulse"></i> General Check-up</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section>
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">Transparent Pricing</div>
+        <h2 class="section-title">Simple, <span class="teal">Affordable</span> Plans</h2>
+        <div class="divider-teal mx-auto"></div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5 fade-up">
+          <div class="glass-card price-card-free p-5 h-100">
+            <div class="section-label mb-1">Online</div>
+            <div class="price-badge"><sup>₹</sup>0 <span style="font-size:1rem;color:var(--text-muted-custom);font-weight:400">/ consult</span></div>
+            <div class="mt-1 mb-4" style="color:var(--teal);font-size:0.85rem;font-weight:600">Completely Free</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>Video or Chat consultation</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>WhatsApp health support</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>Digital prescription</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>Follow-up within 48 hrs</div>
+            <div class="price-feature"><i class="bi bi-x me-2" style="color:rgba(255,255,255,0.2)"></i>Physical examination</div>
+            <div class="price-feature"><i class="bi bi-x me-2" style="color:rgba(255,255,255,0.2)"></i>Blood test at home</div>
+            <button class="btn-teal w-100 mt-4" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
+              Book Free Consult
+            </button>
+          </div>
+        </div>
+        <div class="col-md-5 fade-up" style="transition-delay:0.15s">
+          <div class="glass-card price-card-paid p-5 h-100" style="position:relative">
+            <div style="position:absolute;top:-14px;right:24px;background:var(--price-gold);color:#000;font-size:0.75rem;font-weight:700;padding:5px 16px;border-radius:20px;letter-spacing:1px">POPULAR</div>
+            <div class="section-label mb-1" style="color:var(--price-gold)">Home Visit</div>
+            <div class="price-badge" style="color:var(--price-gold)"><sup>₹</sup>800 <span style="font-size:1rem;color:var(--text-muted-custom);font-weight:400">/ visit</span></div>
+            <div class="mt-1 mb-4" style="color:var(--price-gold);font-size:0.85rem;font-weight:600">Doorstep Service</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>In-person doctor visit</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Physical examination</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Basic blood & vitals test</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Medication guidance</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Follow-up within 24 hrs</div>
+            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Includes online consult too</div>
+            <button class="btn-teal w-100 mt-4" style="background:var(--price-gold);color:#000" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
+              Book Home Visit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK FORM SECTION -->
+  <section id="book-section">
+    <div class="container">
+      <div class="row gy-5 align-items-start">
+        <div class="col-lg-5 fade-up">
+          <div class="section-label">Book Appointment</div>
+          <h2 class="section-title">Get Care <span class="teal">Right Now</span></h2>
+          <div class="divider-teal"></div>
+          <p style="color:var(--text-muted-custom);font-size:0.93rem;line-height:1.8;margin-bottom:28px">
+            Fill the form for a free online consultation — or book a home visit at just ₹800. Our team will confirm within 1 hour.
+          </p>
+          <!-- WhatsApp CTA -->
+          <div class="wa-cta-box">
+            <i class="bi bi-whatsapp" style="font-size:2.2rem;color:#25d366"></i>
+            <p class="my-2 fw-600" style="font-size:0.95rem">Prefer WhatsApp? Message us directly!</p>
+            <p style="font-size:0.82rem;color:var(--text-muted-custom);margin-bottom:16px">Send your name, village & symptoms — we'll assign a doctor within 2 hours.</p>
+            <a class="btn-wa" href="https://wa.me/917002107673?text=Hello%20ArogyaPath%2C%20I%20need%20a%20health%20consultation." target="_blank">
+              <i class="bi bi-whatsapp"></i> Open WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-7 fade-up" style="transition-delay:0.15s">
+          <div class="glass-card p-4 p-lg-5">
+            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:24px">Consultation Booking Form</h5>
+            <div class="form-glass" id="bookForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-label-custom">Full Name *</div>
+                  <input type="text" placeholder="Your full name" id="f-name"/>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-custom">Phone / WhatsApp *</div>
+                  <input type="tel" placeholder="+91 XXXXX XXXXX" id="f-phone"/>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-custom">Village / Town *</div>
+                  <input type="text" placeholder="Your village name" id="f-village"/>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-custom">District *</div>
+                  <select id="f-district">
+                    <option value="">Select district</option>
+                    <option>Itanagar (Capital)</option>
+                    <option>Tawang</option>
+                    <option>West Kameng</option>
+                    <option>East Kameng</option>
+                    <option>Papum Pare</option>
+                    <option>Kurung Kumey</option>
+                    <option>Subansiri</option>
+                    <option>West Siang</option>
+                    <option>East Siang</option>
+                    <option>Dibang Valley</option>
+                    <option>Lohit</option>
+                    <option>Tirap</option>
+                    <option>Changlang</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <div class="form-label-custom">Service Type *</div>
+                  <select id="f-service">
+                    <option value="">Choose service</option>
+                    <option>Free Online Consultation</option>
+                    <option>Doorstep Health Visit (₹800)</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <div class="form-label-custom">Health Concern / Disease</div>
+                  <select id="f-disease">
+                    <option value="">Select condition</option>
+                    <option>Fever & Flu</option>
+                    <option>Respiratory / Breathing</option>
+                    <option>Diabetes Management</option>
+                    <option>Hypertension / BP</option>
+                    <option>Women's Health</option>
+                    <option>Child Health</option>
+                    <option>Mental Wellness</option>
+                    <option>Skin Issues</option>
+                    <option>Joint Pain</option>
+                    <option>Malaria / Typhoid</option>
+                    <option>General Check-up</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <div class="form-label-custom">Describe Your Symptoms</div>
+                  <textarea rows="3" placeholder="Briefly describe your symptoms or health concern..." id="f-symptoms"></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn-teal w-100" onclick="submitBooking()" style="justify-content:center;padding:15px">
+                    <i class="bi bi-send-check"></i> Submit Booking Request
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="form-success" style="display:none;text-align:center;padding:32px 0">
+              <div style="font-size:3rem;color:var(--teal);margin-bottom:12px"><i class="bi bi-check-circle-fill"></i></div>
+              <h5 style="font-family:'Sora',sans-serif;font-weight:700">Booking Received!</h5>
+              <p style="color:var(--text-muted-custom);font-size:0.9rem">We'll confirm via WhatsApp within 1 hour. Thank you!</p>
+              <button class="btn-teal mt-3" onclick="resetForm()" style="justify-content:center">Book Another</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI TESTIMONIALS ON HOME -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">Voices from the Community</div>
+        <h2 class="section-title">What People <span class="teal">Say</span></h2>
+        <div class="divider-teal mx-auto"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 fade-up">
+          <div class="glass-card p-4 h-100">
+            <div class="stars mb-3">★★★★★</div>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;margin-bottom:20px">"My daughter had high fever and the nearest hospital is 3 hours away. ArogyaPath's doctor consulted us on WhatsApp the same night. Life saving!"</p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="avatar-ring"><img src="https://i.pravatar.cc/80?img=47" alt=""/></div>
+              <div><div style="font-weight:600;font-size:0.9rem">Dorjee Wangdi</div><div style="font-size:0.78rem;color:var(--teal)">Tawang District</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up" style="transition-delay:0.1s">
+          <div class="glass-card p-4 h-100">
+            <div class="stars mb-3">★★★★★</div>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;margin-bottom:20px">"The home visit was very affordable. The health worker came to our village, did tests and explained everything in our language. Amazing service."</p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="avatar-ring"><img src="https://i.pravatar.cc/80?img=32" alt=""/></div>
+              <div><div style="font-weight:600;font-size:0.9rem">Yalum Lego</div><div style="font-size:0.78rem;color:var(--teal)">West Siang</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up" style="transition-delay:0.2s">
+          <div class="glass-card p-4 h-100">
+            <div class="stars mb-3">★★★★★</div>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;margin-bottom:20px">"For us elderly people, booking on WhatsApp and getting free advice from a real doctor is a blessing. No more missing work for hospital trips."</p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="avatar-ring"><img src="https://i.pravatar.cc/80?img=60" alt=""/></div>
+              <div><div style="font-weight:600;font-size:0.9rem">Pema Khandu</div><div style="font-size:0.78rem;color:var(--teal)">Lohit Valley</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn-outline-glass" onclick="showPage('testimonials')"><i class="bi bi-chat-square-quote"></i> Read All Testimonials</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ════════════════════════════════════════
+     ABOUT US PAGE
+════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <section style="padding-top:130px">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6 fade-up">
+          <div class="section-label">Our Story</div>
+          <h1 class="section-title">Healthcare Should Not Depend on <span class="teal">Geography</span></h1>
+          <div class="divider-teal"></div>
+          <p style="color:var(--text-muted-custom);line-height:1.85;margin-bottom:16px">
+            ArogyaPath was founded in 2022 by a group of doctors and social workers from Arunachal Pradesh who witnessed firsthand how remote geography meant preventable deaths. Villages that took 6+ hours by road to reach a hospital. Mothers delivering without medical help. Children dying of treatable diseases.
+          </p>
+          <p style="color:var(--text-muted-custom);line-height:1.85">
+            We built ArogyaPath to bridge that gap using technology, affordable pricing, and the power of community health workers. Our mission: make quality healthcare available to every household in Arunachal Pradesh — free online and at ₹800 at your doorstep.
+          </p>
+        </div>
+        <div class="col-lg-6 fade-up" style="transition-delay:0.15s">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="glass-card p-4 text-center">
+              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">2022</div>
+              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Year Founded</div>
+            </div>
+            <div class="glass-card p-4 text-center">
+              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">5200+</div>
+              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Patients Served</div>
+            </div>
+            <div class="glass-card p-4 text-center">
+              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">38+</div>
+              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Districts Reached</div>
+            </div>
+            <div class="glass-card p-4 text-center">
+              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">18</div>
+              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Doctors on Team</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION VALUES -->
+  <section>
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">Our Values</div>
+        <h2 class="section-title">What <span class="teal">Drives Us</span></h2>
+        <div class="divider-teal mx-auto"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 fade-up">
+          <div class="glass-card p-4 h-100">
+            <div class="service-icon-wrap"><i class="bi bi-people-fill"></i></div>
+            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:10px">Community First</h5>
+            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">We design every service around the actual lives of people in remote Arunachal — their language, connectivity, and economic reality.</p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up" style="transition-delay:0.1s">
+          <div class="glass-card p-4 h-100">
+            <div class="service-icon-wrap"><i class="bi bi-shield-heart"></i></div>
+            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:10px">Dignity in Care</h5>
+            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Every patient deserves respectful, non-judgmental care. Our doctors and health workers are trained in cultural sensitivity.</p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up" style="transition-delay:0.2s">
+          <div class="glass-card p-4 h-100">
+            <div class="service-icon-wrap"><i class="bi bi-transparency"></i></div>
+            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:10px">Full Transparency</h5>
+            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">No hidden fees. No unnecessary referrals. Just honest healthcare at fair prices, always.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">Meet the Team</div>
+        <h2 class="section-title">The Doctors Behind <span class="teal">ArogyaPath</span></h2>
+        <div class="divider-teal mx-auto"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-3 fade-up">
+          <div class="glass-card p-4 text-center team-card h-100">
+            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=12" alt=""/></div>
+            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Rina Tashi</div>
+            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS, MD – General Medicine</div>
+            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Founder & Medical Director</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 fade-up" style="transition-delay:0.1s">
+          <div class="glass-card p-4 text-center team-card h-100">
+            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=15" alt=""/></div>
+            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Anil Perme</div>
+            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS – Pediatrics</div>
+            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Child Health Lead</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 fade-up" style="transition-delay:0.2s">
+          <div class="glass-card p-4 text-center team-card h-100">
+            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=25" alt=""/></div>
+            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Meena Gadi</div>
+            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS, DGO – Women's Health</div>
+            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Obstetrics Specialist</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 fade-up" style="transition-delay:0.3s">
+          <div class="glass-card p-4 text-center team-card h-100">
+            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=8" alt=""/></div>
+            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Zomla Kri</div>
+            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS – Psychiatry</div>
+            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Mental Wellness Lead</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-about -->
+
+<!-- ════════════════════════════════════════
+     TESTIMONIALS PAGE
+════════════════════════════════════════ -->
+<div id="page-testimonials" class="page">
+  <section style="padding-top:130px">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">Real Stories</div>
+        <h1 class="section-title">Voices from <span class="teal">Across Arunachal</span></h1>
+        <div class="divider-teal mx-auto"></div>
+        <p style="color:var(--text-muted-custom);max-width:560px;margin:0 auto;font-size:0.95rem">Real experiences from real people in villages and towns across Arunachal Pradesh.</p>
+      </div>
+      <div class="row g-4" id="testimonialGrid">
+        <!-- Generated dynamically -->
+      </div>
+    </div>
+  </section>
+  <!-- Rating Overview -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="glass-card p-5 fade-up text-center">
+        <div style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:var(--teal);line-height:1">4.9</div>
+        <div class="stars" style="font-size:1.4rem;margin:8px 0">★★★★★</div>
+        <div style="color:var(--text-muted-custom);font-size:0.9rem">Based on 1,240+ patient reviews</div>
+        <div class="row mt-4 g-3 justify-content-center">
+          <div class="col-md-2 col-4">
+            <div style="font-size:0.8rem;color:var(--text-muted-custom);margin-bottom:6px">5 ★</div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:8px;height:8px;overflow:hidden">
+              <div style="background:var(--teal);height:100%;width:92%"></div>
+            </div>
+          </div>
+          <div class="col-md-2 col-4">
+            <div style="font-size:0.8rem;color:var(--text-muted-custom);margin-bottom:6px">4 ★</div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:8px;height:8px;overflow:hidden">
+              <div style="background:var(--teal);height:100%;width:6%"></div>
+            </div>
+          </div>
+          <div class="col-md-2 col-4">
+            <div style="font-size:0.8rem;color:var(--text-muted-custom);margin-bottom:6px">3 ★</div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:8px;height:8px;overflow:hidden">
+              <div style="background:var(--teal);height:100%;width:2%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-testimonials -->
+
+<!-- ════════════════════════════════════════
+     CONTACT PAGE
+════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <section style="padding-top:130px">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">Get in Touch</div>
+        <h1 class="section-title">We're <span class="teal">Always Here</span> for You</h1>
+        <div class="divider-teal mx-auto"></div>
+      </div>
+      <div class="row g-5 align-items-start">
+        <div class="col-lg-5 fade-up">
+          <div class="glass-card p-4">
+            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:20px">Contact Information</h5>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div>
+                <div style="font-weight:600;margin-bottom:2px">Phone / WhatsApp</div>
+                <div style="color:var(--text-muted-custom);font-size:0.88rem">+91 94360 XXXXX</div>
+                <div style="color:var(--text-muted-custom);font-size:0.88rem">Mon–Sun, 6 AM – 10 PM</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="bi bi-envelope-fill"></i></div>
+              <div>
+                <div style="font-weight:600;margin-bottom:2px">Email</div>
+                <div style="color:var(--text-muted-custom);font-size:0.88rem">care@arogyapath.in</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <div>
+                <div style="font-weight:600;margin-bottom:2px">Head Office</div>
+                <div style="color:var(--text-muted-custom);font-size:0.88rem">Itanagar, Arunachal Pradesh – 791111</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="bi bi-clock-fill"></i></div>
+              <div>
+                <div style="font-weight:600;margin-bottom:2px">Online Consult Hours</div>
+                <div style="color:var(--text-muted-custom);font-size:0.88rem">24 × 7 — WhatsApp always open</div>
+              </div>
+            </div>
+          </div>
+          <div class="wa-cta-box mt-4">
+            <i class="bi bi-whatsapp" style="font-size:2rem;color:#25d366"></i>
+            <p class="my-2 fw-600">Fastest response via WhatsApp</p>
+            <a class="btn-wa" href="https://wa.me/917002107673?text=Hello%20ArogyaPath" target="_blank">
+              <i class="bi bi-whatsapp"></i> Message Us Now
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-7 fade-up" style="transition-delay:0.15s">
+          <div class="glass-card p-4 p-lg-5">
+            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:24px">Send Us a Message</h5>
+            <div class="form-glass" id="contactForm">
+              <div class="form-label-custom">Your Name *</div>
+              <input type="text" placeholder="Full name" id="c-name"/>
+              <div class="form-label-custom">Phone / Email *</div>
+              <input type="text" placeholder="Phone number or email" id="c-contact"/>
+              <div class="form-label-custom">Subject</div>
+              <select id="c-subject">
+                <option>General Inquiry</option>
+                <option>Booking Help</option>
+                <option>Feedback</option>
+                <option>Partnership / NGO Collaboration</option>
+                <option>Media / Press</option>
+              </select>
+              <div class="form-label-custom" style="margin-top:4px">Message *</div>
+              <textarea rows="4" placeholder="Write your message here..." id="c-msg"></textarea>
+              <button class="btn-teal w-100" onclick="submitContact()" style="justify-content:center;padding:15px">
+                <i class="bi bi-send"></i> Send Message
+              </button>
+            </div>
+            <div id="contact-success" style="display:none;text-align:center;padding:32px 0">
+              <div style="font-size:3rem;color:var(--teal)"><i class="bi bi-check-circle-fill"></i></div>
+              <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-top:12px">Message Sent!</h5>
+              <p style="color:var(--text-muted-custom);font-size:0.9rem">We'll get back to you within 24 hours.</p>
+              <button class="btn-teal mt-3" onclick="resetContact()" style="justify-content:center">Send Another</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-contact -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4 mb-5">
+      <div class="col-lg-4">
+        <div class="footer-logo mb-3"><i class="bi bi-heart-pulse-fill me-2" style="color:var(--teal)"></i>Arogya<span>Path</span></div>
+        <p style="color:rgba(255,255,255,0.45);font-size:0.87rem;line-height:1.8;max-width:280px">Free online consultations & affordable home health visits for rural Arunachal Pradesh.</p>
+        <div class="mt-3">
+          <a class="social-icon" href="#"><i class="bi bi-facebook"></i></a>
+          <a class="social-icon" href="#"><i class="bi bi-instagram"></i></a>
+          <a class="social-icon" href="https://wa.me/917002107673" target="_blank"><i class="bi bi-whatsapp"></i></a>
+          <a class="social-icon" href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Pages</div>
+        <a class="footer-link" href="#" onclick="showPage('home')">Home</a>
+        <a class="footer-link" href="#" onclick="showPage('about')">About Us</a>
+        <a class="footer-link" href="#" onclick="showPage('testimonials')">Testimonials</a>
+        <a class="footer-link" href="#" onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Services</div>
+        <a class="footer-link" href="#">Free Consultation</a>
+        <a class="footer-link" href="#">Home Visit ₹800</a>
+        <a class="footer-link" href="#">WhatsApp Health</a>
+        <a class="footer-link" href="#">Medicine Delivery</a>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer-heading">Emergency Contact</div>
+        <div class="glass-card p-3" style="border-color:rgba(255,100,100,0.3)!important">
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:4px">24/7 Emergency WhatsApp</div>
+          <div style="font-weight:700;font-size:1.1rem;color:#ff6b6b"><i class="bi bi-telephone-fill me-2"></i>+91 94360 XXXXX</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:6px">For urgent health situations only</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div style="font-size:0.8rem;color:rgba(255,255,255,0.3)">© 2025 ArogyaPath. All rights reserved. Serving Arunachal Pradesh.</div>
+      <div style="font-size:0.8rem;color:rgba(255,255,255,0.3)">Privacy Policy · Terms of Service</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ AI BOT ═══════════════ -->
+<button id="ai-bot-btn" title="Health Assistant" onclick="toggleBot()">
+  <i class="bi bi-robot"></i>
+</button>
+
+<div id="ai-chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar"><i class="bi bi-robot"></i></div>
+    <div>
+      <div class="chat-title">HealthBot</div>
+      <div class="chat-subtitle">● Online – Ask me anything</div>
+    </div>
+    <button class="chat-close" onclick="toggleBot()"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="quick-chips" id="quickChips">
+    <span class="qchip" onclick="sendQuick('Book a consultation')">Book consult</span>
+    <span class="qchip" onclick="sendQuick('Home visit details')">Home visit</span>
+    <span class="qchip" onclick="sendQuick('What diseases do you treat?')">Diseases</span>
+    <span class="qchip" onclick="sendQuick('WhatsApp number')">WhatsApp</span>
+  </div>
+  <div class="chat-input-wrap">
+    <input id="chat-input" placeholder="Ask about symptoms, services..." onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button id="chat-send" onclick="sendChat()"><i class="bi bi-send-fill"></i></button>
+  </div>
+</div>
+
+<!-- ════ SCRIPTS ════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ── PAGE ROUTER ──
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + name);
+  if(navEl) navEl.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  if(name === 'testimonials') renderTestimonials();
+  setTimeout(observeFadeUps, 100);
+  // close mobile nav
+  const nc = document.getElementById('navMenu');
+  if(nc.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(nc).hide();
+}
+
+// ── FADE ON SCROLL ──
+function observeFadeUps() {
+  const els = document.querySelectorAll('.fade-up:not(.visible)');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:0.1});
+  els.forEach(el => io.observe(el));
+}
+observeFadeUps();
+
+// ── BOOKING FORM ──
+function submitBooking() {
+  const n = document.getElementById('f-name').value.trim();
+  const p = document.getElementById('f-phone').value.trim();
+  if(!n || !p) { alert('Please fill your name and phone number.'); return; }
+  document.getElementById('bookForm').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+function resetForm() {
+  document.getElementById('bookForm').style.display = 'block';
+  document.getElementById('form-success').style.display = 'none';
+  document.getElementById('bookForm').querySelectorAll('input,select,textarea').forEach(el=>el.value='');
+}
+
+// ── CONTACT FORM ──
+function submitContact() {
+  const n = document.getElementById('c-name').value.trim();
+  const m = document.getElementById('c-msg').value.trim();
+  if(!n || !m) { alert('Please fill your name and message.'); return; }
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contact-success').style.display = 'block';
+}
+function resetContact() {
+  document.getElementById('contactForm').style.display = 'block';
+  document.getElementById('contact-success').style.display = 'none';
+}
+
+// ── TESTIMONIALS DATA ──
+const testimonials = [
+  { name:'Dorjee Wangdi', loc:'Tawang District', img:'https://i.pravatar.cc/80?img=47', stars:5, text:'My daughter had high fever and the nearest hospital is 3 hours away. ArogyaPath\'s doctor consulted us on WhatsApp the same night. Life-saving service!' },
+  { name:'Yalum Lego', loc:'West Siang', img:'https://i.pravatar.cc/80?img=32', stars:5, text:'The home visit was very affordable. The health worker came to our village, did tests and explained everything. I couldn\'t believe doctors come here now.' },
+  { name:'Pema Khandu', loc:'Lohit Valley', img:'https://i.pravatar.cc/80?img=60', stars:5, text:'For us elderly people, getting free advice from a real doctor via WhatsApp is a blessing. No more missing a week\'s work for hospital trips.' },
+  { name:'Tamar Riba', loc:'Papum Pare', img:'https://i.pravatar.cc/80?img=22', stars:5, text:'My wife had pregnancy complications. Dr. Meena guided us online at midnight. Because of ArogyaPath, my daughter was born safely.' },
+  { name:'Hage Appa', loc:'Dibang Valley', img:'https://i.pravatar.cc/80?img=11', stars:5, text:'I have diabetes and used to spend ₹3000 every time going to hospital. Now I get monthly online check-ups free and home tests at ₹800. Brilliant!' },
+  { name:'Nima Sherpa', loc:'West Kameng', img:'https://i.pravatar.cc/80?img=55', stars:5, text:'Our village has no health center. ArogyaPath sends a worker every month. Children\'s vaccinations are now done at home. This team is God-sent.' },
+  { name:'Oji Tayeng', loc:'Changlang', img:'https://i.pravatar.cc/80?img=39', stars:5, text:'I was depressed for months and too ashamed to talk to anyone. The mental wellness doctor on ArogyaPath helped me anonymously. I\'m better now.' },
+  { name:'Bini Nime', loc:'Subansiri', img:'https://i.pravatar.cc/80?img=48', stars:5, text:'The online consultation is genuinely free! I was skeptical but the doctor spent 20 minutes with me, gave a prescription, and it worked. Highly recommend.' },
+  { name:'Talo Kath', loc:'Tirap', img:'https://i.pravatar.cc/80?img=17', stars:4, text:'Good service. The booking form works well and confirmation came fast. Would love more local language support — that would make it perfect.' },
+];
+function renderTestimonials() {
+  const grid = document.getElementById('testimonialGrid');
+  if(grid.children.length > 0) return;
+  testimonials.forEach((t, i) => {
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4 fade-up';
+    col.style.transitionDelay = (i * 0.07) + 's';
+    col.innerHTML = `<div class="glass-card p-4 h-100">
+      <div class="stars mb-3">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div>
+      <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.75;margin-bottom:20px">"${t.text}"</p>
+      <div class="d-flex align-items-center gap-3">
+        <div class="avatar-ring"><img src="${t.img}" alt="${t.name}"/></div>
+        <div><div style="font-weight:600;font-size:0.9rem">${t.name}</div><div style="font-size:0.78rem;color:var(--teal)">${t.loc}</div></div>
+      </div>
+    </div>`;
+    grid.appendChild(col);
+  });
+  setTimeout(observeFadeUps, 50);
+}
+
+// ── AI CHATBOT ──
+const botKnowledge = {
+  'book': 'You can book a free consultation by filling the form on our Home page, or message us on WhatsApp at +91-94360-XXXXX. We confirm within 1 hour!',
+  'home visit': 'Our doorstep health visit costs just ₹800. A qualified health worker comes to your home for physical check-up, blood tests, and medication guidance. Book via the form or WhatsApp.',
+  'free': 'Yes! Online consultations are completely FREE — no charges at all. Just fill the form or WhatsApp us.',
+  'whatsapp': 'Our WhatsApp number is +91-94360-XXXXX. Send your name, village, and symptoms and a doctor will respond within 2 hours.',
+  'disease': 'We cover: Fever & Flu, Diabetes, Hypertension, Women\'s Health, Child Health, Respiratory issues, Mental Wellness, Skin conditions, Malaria, Typhoid, Joint Pain, and General check-ups.',
+  'price': 'Online consultation is FREE. Home visit is ₹800 per visit including check-up and basic tests.',
+  'contact': 'Email: care@arogyapath.in | Phone: +91-94360-XXXXX | WhatsApp: Same number, available 24/7.',
+  'doctor': 'We have 18+ certified MBBS/MD doctors covering General Medicine, Pediatrics, Women\'s Health, and Mental Wellness.',
+  'district': 'We cover 38+ districts across Arunachal Pradesh including Tawang, West Siang, Lohit, Changlang, Dibang Valley, and more.',
+  'hello': 'Namaste! 🙏 I\'m HealthBot, your ArogyaPath assistant. How can I help you today? You can ask about our services, booking, doctors, or pricing.',
+  'hi': 'Namaste! 🙏 I\'m HealthBot. Ask me anything about ArogyaPath\'s healthcare services!',
+  'fever': 'For fever, we recommend a free online consultation first. Our doctors can assess your symptoms and advise you. You can also book a home visit for ₹800 for in-person check-up.',
+};
+function getBotReply(msg) {
+  const m = msg.toLowerCase();
+  for(const [key, reply] of Object.entries(botKnowledge)) {
+    if(m.includes(key)) return reply;
+  }
+  return 'Thank you for your question! For the best answer, please WhatsApp us at +91-70021 07673 or fill our booking form. Our team typically responds within 1-2 hours. Is there anything else I can help with?';
+}
+let botOpen = false;
+function toggleBot() {
+  botOpen = !botOpen;
+  const win = document.getElementById('ai-chat-window');
+  win.classList.toggle('open', botOpen);
+  if(botOpen && document.getElementById('chat-messages').children.length === 0) {
+    addBotMsg('Namaste! 🙏 I\'m HealthBot — your ArogyaPath assistant. Ask me about our services, booking, or WhatsApp number!');
+  }
+}
+function addBotMsg(txt) {
+  const d = document.createElement('div');
+  d.className = 'msg bot'; d.textContent = txt;
+  const msgs = document.getElementById('chat-messages');
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+}
+function addUserMsg(txt) {
+  const d = document.createElement('div');
+  d.className = 'msg user'; d.textContent = txt;
+  const msgs = document.getElementById('chat-messages');
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+}
+function showTyping() {
+  const d = document.createElement('div');
+  d.className = 'msg bot typing-dots'; d.id = 'typingDot';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  document.getElementById('chat-messages').appendChild(d);
+  document.getElementById('chat-messages').scrollTop = 99999;
+}
+function removeTyping() {
+  const t = document.getElementById('typingDot');
+  if(t) t.remove();
+}
+function sendChat() {
+  const inp = document.getElementById('chat-input');
+  const msg = inp.value.trim(); if(!msg) return;
+  addUserMsg(msg); inp.value = '';
+  showTyping();
+  document.getElementById('quickChips').style.display = 'none';
+  setTimeout(() => {
+    removeTyping();
+    addBotMsg(getBotReply(msg));
+  }, 900 + Math.random() * 600);
+}
+function sendQuick(msg) {
+  document.getElementById('chat-input').value = msg;
+  sendChat();
+}
+
+// ── DISEASE TAG TOGGLE ──
+document.querySelectorAll('.disease-tag').forEach(t => {
+  t.addEventListener('click', () => t.classList.toggle('active'));
+});
+
+// ── NAVBAR SCROLL ──
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if(window.scrollY > 40) nav.style.background = 'rgba(10,22,40,0.95)';
+  else nav.style.background = 'rgba(10,22,40,0.7)';
+});
+
+// Initial fade-up
+setTimeout(observeFadeUps, 200);
+</script>
+</body>
+</html>
