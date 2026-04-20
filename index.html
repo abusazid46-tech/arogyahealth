@@ -2,1353 +2,1992 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ArogyaPath – Rural Healthcare, Arunachal Pradesh</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HealthiQure Technologies – Right Healthcare, Simplified</title>
+  <meta name="description" content="HealthiQure provides end-to-end healthcare support including doctor consultation, diagnostics, telemedicine, and hospital coordination across India's remote regions." />
+  <meta name="keywords" content="healthcare, telemedicine, diagnostics, Arunachal Pradesh, Assam, phygital healthcare, doctor consultation, remote healthcare India" />
+  <meta property="og:title" content="HealthiQure – Right Healthcare, Simplified" />
+  <meta property="og:description" content="Connecting patients to the right doctors and hospitals across India's underserved regions through a Phygital healthcare ecosystem." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.healthiqure.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HealthiQure – Right Healthcare, Simplified" />
+  <meta name="twitter:description" content="End-to-end healthcare support across India's remote and underserved regions." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --teal:       #0abf8e;
-      --teal-light: #12dba8;
-      --teal-dark:  #07856a;
-      --navy:       #0a1628;
-      --navy2:      #112040;
-      --glass-bg:   rgba(255,255,255,0.07);
-      --glass-border: rgba(255,255,255,0.15);
-      --text-muted-custom: rgba(255,255,255,0.6);
-      --card-hover-border: #0abf8e;
-      --price-gold: #f5c842;
+      --bg-primary: #070B14;
+      --bg-card: #0D1424;
+      --bg-glass: rgba(13, 20, 36, 0.7);
+      --accent: #0EA5E9;
+      --accent-2: #38BDF8;
+      --accent-dim: rgba(14, 165, 233, 0.12);
+      --accent-border: rgba(14, 165, 233, 0.25);
+      --text-primary: #F0F6FF;
+      --text-secondary: #8BA3C4;
+      --text-muted: #4A6380;
+      --border: rgba(255,255,255,0.06);
+      --glow: 0 0 40px rgba(14,165,233,0.18);
     }
 
-    /* ── RESET & BASE ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--navy);
-      color: #fff;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
       overflow-x: hidden;
+      line-height: 1.7;
     }
-    h1,h2,h3,h4,h5,h6 { font-family: 'Sora', sans-serif; }
 
-    /* ── ANIMATED BG MESH ── */
-    .mesh-bg {
-      position: fixed; inset: 0; z-index: -1; overflow: hidden;
-      background: linear-gradient(135deg, #071120 0%, #0a1628 50%, #0d1f3c 100%);
+    h1, h2, h3, h4, h5 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
     }
-    .mesh-bg::before, .mesh-bg::after {
-      content: ''; position: absolute; border-radius: 50%;
-      filter: blur(80px); opacity: 0.18; animation: floatBlob 12s ease-in-out infinite alternate;
-    }
-    .mesh-bg::before {
-      width: 600px; height: 600px; top: -150px; left: -150px;
-      background: radial-gradient(circle, #0abf8e, transparent 70%);
-    }
-    .mesh-bg::after {
-      width: 500px; height: 500px; bottom: -120px; right: -120px;
-      background: radial-gradient(circle, #0d6efd, transparent 70%);
-      animation-delay: -6s;
-    }
-    @keyframes floatBlob {
-      from { transform: translate(0,0) scale(1); }
-      to   { transform: translate(60px,40px) scale(1.1); }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
     }
 
     /* ── NAVBAR ── */
     .navbar {
-      background: rgba(10,22,40,0.7) !important;
+      background: rgba(7, 11, 20, 0.85);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 14px 0;
-      transition: background 0.3s;
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     .navbar-brand {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800; font-size: 1.35rem;
-      color: #fff !important;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--text-primary) !important;
       letter-spacing: -0.5px;
     }
-    .navbar-brand span { color: var(--teal); }
+
+    .navbar-brand span { color: var(--accent); }
+
     .nav-link {
-      color: rgba(255,255,255,0.75) !important;
-      font-weight: 500; font-size: 0.92rem;
-      position: relative; padding: 6px 14px !important;
-      transition: color 0.3s;
-    }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: 0; left: 14px; right: 14px;
-      height: 2px; background: var(--teal); border-radius: 2px;
-      transform: scaleX(0); transition: transform 0.3s;
-    }
-    .nav-link:hover, .nav-link.active { color: #fff !important; }
-    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
-    .btn-nav-cta {
-      background: var(--teal); color: #fff !important; border-radius: 30px;
-      padding: 7px 22px !important; font-weight: 600; font-size: 0.88rem;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    .btn-nav-cta:hover { background: var(--teal-light); box-shadow: 0 0 18px rgba(10,191,142,0.4); }
-
-    /* ── GLASS CARD ── */
-    .glass-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      backdrop-filter: blur(16px);
-      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
-    }
-    .glass-card:hover {
-      border-color: var(--card-hover-border);
-      box-shadow: 0 0 28px rgba(10,191,142,0.25), 0 8px 32px rgba(0,0,0,0.3);
-      transform: translateY(-6px);
+      color: var(--text-secondary) !important;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+      padding: 0.4rem 0.85rem !important;
     }
 
-    /* ── SECTION HELPERS ── */
-    section { padding: 90px 0; }
-    .section-label {
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800; line-height: 1.2;
-    }
-    .teal { color: var(--teal); }
-    .divider-teal {
-      width: 56px; height: 4px; background: var(--teal);
-      border-radius: 4px; margin: 16px 0 32px;
+    .nav-link:hover { color: var(--text-primary) !important; }
+
+    .btn-get {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: background 0.2s, box-shadow 0.2s;
     }
 
-    /* ── PAGE SECTIONS (SPA) ── */
-    .page { display: none; }
-    .page.active { display: block; }
+    .btn-get:hover {
+      background: var(--accent-2);
+      box-shadow: 0 0 20px rgba(14,165,233,0.4);
+      color: #fff;
+    }
 
-    /* ════════════════════════════════
-       HOME PAGE
-    ════════════════════════════════ */
-    #home-hero {
+    .navbar-toggler {
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(0.7);
+    }
+
+    /* ── HERO ── */
+    .hero {
       min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 120px 0 80px;
-      position: relative; overflow: hidden;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(10,191,142,0.12); border: 1px solid rgba(10,191,142,0.3);
-      color: var(--teal); font-size: 0.82rem; font-weight: 600;
-      padding: 6px 16px; border-radius: 30px; margin-bottom: 24px;
-    }
-    .hero-badge span.dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.4); }
-    }
-    .hero-title {
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 800; line-height: 1.1; margin-bottom: 20px;
-    }
-    .hero-title em { font-style: normal; color: var(--teal); }
-    .hero-subtitle {
-      font-size: 1.08rem; color: var(--text-muted-custom);
-      max-width: 520px; line-height: 1.75; margin-bottom: 36px;
-    }
-    .btn-teal {
-      background: var(--teal); color: #fff; border: none;
-      padding: 14px 32px; border-radius: 50px; font-weight: 700;
-      font-size: 0.95rem; transition: all 0.3s; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-teal:hover {
-      background: var(--teal-light);
-      box-shadow: 0 0 28px rgba(10,191,142,0.45);
-      transform: translateY(-2px);
-    }
-    .btn-outline-glass {
-      background: transparent;
-      border: 1px solid var(--glass-border);
-      color: #fff; padding: 14px 28px; border-radius: 50px;
-      font-weight: 600; font-size: 0.95rem; transition: all 0.3s; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-outline-glass:hover {
-      border-color: var(--teal); color: var(--teal);
-      background: rgba(10,191,142,0.07);
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 6rem 0 4rem;
+      overflow: hidden;
     }
 
-    /* HERO STATS */
-    .hero-stat-row { display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
-    .hero-stat { border-left: 2px solid rgba(10,191,142,0.4); padding-left: 16px; }
-    .hero-stat .num { font-family: 'Sora', sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--teal); }
-    .hero-stat .lbl { font-size: 0.8rem; color: var(--text-muted-custom); margin-top: 2px; }
-
-    /* HERO IMAGE / CARD VISUAL */
-    .hero-visual {
-      position: relative; display: flex; justify-content: center; align-items: center;
-    }
-    .hero-img-wrap {
-      width: 100%; max-width: 440px; aspect-ratio: 4/5;
-      border-radius: 28px; overflow: hidden; position: relative;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-    }
-    .hero-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 6s ease;
-    }
-    .hero-img-wrap:hover img { transform: scale(1.05); }
-    .hero-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,22,40,0.7) 0%, transparent 60%);
-    }
-    .floating-chip {
+    .hero-bg {
       position: absolute;
-      background: rgba(10,22,40,0.85);
-      border: 1px solid rgba(10,191,142,0.4);
-      backdrop-filter: blur(12px); border-radius: 16px; padding: 12px 18px;
-      font-size: 0.82rem; font-weight: 600; color: #fff;
-      display: flex; align-items: center; gap: 10px; white-space: nowrap;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(14,165,233,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(56,189,248,0.06) 0%, transparent 60%);
+      pointer-events: none;
     }
-    .chip-icon { font-size: 1.3rem; color: var(--teal); }
-    .chip1 { top: 28px; left: -50px; animation: chipFloat 4s ease-in-out infinite; }
-    .chip2 { bottom: 60px; left: -60px; animation: chipFloat 4s ease-in-out infinite 2s; }
-    .chip3 { top: 50%; right: -60px; animation: chipFloat 4s ease-in-out infinite 1s; }
-    @keyframes chipFloat {
-      0%,100% { transform: translateY(0); }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(14,165,233,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,165,233,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      color: var(--accent-2);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .highlight {
+      color: var(--accent);
+      position: relative;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .btn-primary-hq {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary-hq:hover {
+      background: var(--accent-2);
+      box-shadow: 0 0 30px rgba(14,165,233,0.45);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-hq {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-outline-hq:hover {
+      border-color: var(--accent-border);
+      color: var(--accent-2);
+      background: var(--accent-dim);
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-orb {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(14,165,233,0.20), rgba(14,165,233,0.04) 60%, transparent 80%);
+      border: 1px solid rgba(14,165,233,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: pulse-orb 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-orb {
+      0%, 100% { box-shadow: 0 0 40px rgba(14,165,233,0.15), 0 0 80px rgba(14,165,233,0.06); }
+      50% { box-shadow: 0 0 60px rgba(14,165,233,0.25), 0 0 120px rgba(14,165,233,0.10); }
+    }
+
+    .hero-orb-inner {
+      font-size: 7rem;
+      color: var(--accent);
+      opacity: 0.8;
+      animation: float-icon 3s ease-in-out infinite;
+    }
+
+    @keyframes float-icon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero-float-card {
+      position: absolute;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.85rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      animation: float-card 4s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .hero-float-card .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .card-f1 { top: 10%; left: -10%; animation-delay: 0s; }
+    .card-f2 { bottom: 18%; right: -8%; animation-delay: 1.5s; }
+    .card-f3 { bottom: 5%; left: -5%; animation-delay: 0.8s; }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
     }
 
-    /* SERVICES SECTION */
-    .service-icon-wrap {
-      width: 56px; height: 56px; border-radius: 14px;
-      background: rgba(10,191,142,0.12); border: 1px solid rgba(10,191,142,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; color: var(--teal); margin-bottom: 18px;
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    .divider-line {
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { padding: 6rem 0; }
+
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color 0.25s;
+      margin-bottom: 1rem;
+    }
+
+    .about-feature:hover { border-color: var(--accent-border); }
+
+    .about-feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .about-feature-text h6 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .about-feature-text p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, rgba(14,165,233,0.06) 0%, transparent 50%, rgba(56,189,248,0.04) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .philosophy-quote {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      letter-spacing: -0.3px;
+    }
+
+    .philosophy-quote::before {
+      content: '"';
+      color: var(--accent);
+      font-size: 4rem;
+      line-height: 0;
+      vertical-align: -1rem;
+      margin-right: 0.25rem;
+      font-family: serif;
+    }
+
+    .philosophy-quote::after {
+      content: '"';
+      color: var(--accent);
+      font-size: 4rem;
+      line-height: 0;
+      vertical-align: -1rem;
+      margin-left: 0.25rem;
+      font-family: serif;
+    }
+
+    /* ── SERVICES ── */
+    #services { padding: 6rem 0; }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem 1.75rem;
+      height: 100%;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
       transition: background 0.3s;
     }
-    .glass-card:hover .service-icon-wrap {
-      background: rgba(10,191,142,0.2);
+
+    .service-card:hover .service-icon {
+      background: rgba(14,165,233,0.22);
     }
 
-    /* PRICING CARD */
-    .price-card-free { border-color: rgba(255,255,255,0.12) !important; }
-    .price-card-paid {
-      border-color: var(--price-gold) !important;
-      box-shadow: 0 0 32px rgba(245,200,66,0.15) !important;
-    }
-    .price-badge {
-      font-size: 2.6rem; font-weight: 800; font-family: 'Sora', sans-serif;
-    }
-    .price-badge sup { font-size: 1.2rem; vertical-align: super; }
-    .price-feature { font-size: 0.88rem; color: rgba(255,255,255,0.7); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .price-feature:last-child { border-bottom: none; }
-
-    /* DISEASE TAGS */
-    .disease-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 16px; border-radius: 30px;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.83rem; font-weight: 500; cursor: pointer;
-      transition: all 0.25s; margin: 4px;
-    }
-    .disease-tag:hover, .disease-tag.active {
-      background: rgba(10,191,142,0.15); border-color: var(--teal);
-      color: var(--teal);
+    .service-card h5 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-primary);
     }
 
-    /* FORM SECTION */
-    .form-glass input, .form-glass select, .form-glass textarea {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #fff; border-radius: 12px; padding: 13px 18px;
-      font-size: 0.93rem; width: 100%; margin-bottom: 16px;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      outline: none; font-family: 'DM Sans', sans-serif;
-    }
-    .form-glass input::placeholder,
-    .form-glass textarea::placeholder { color: rgba(255,255,255,0.35); }
-    .form-glass input:focus, .form-glass select:focus, .form-glass textarea:focus {
-      border-color: var(--teal); box-shadow: 0 0 0 3px rgba(10,191,142,0.15);
-    }
-    .form-glass select option { background: var(--navy2); color: #fff; }
-    .form-label-custom { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.6); margin-bottom: 6px; letter-spacing: 0.5px; }
-
-    /* TESTIMONIALS */
-    .stars { color: var(--price-gold); font-size: 0.9rem; letter-spacing: 2px; }
-    .avatar-ring {
-      width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
-      border: 2px solid var(--teal);
-    }
-    .avatar-ring img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* ABOUT PAGE */
-    .team-card .avatar-lg {
-      width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
-      border: 3px solid var(--teal); margin: 0 auto 14px;
-    }
-    .team-card .avatar-lg img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* CONTACT PAGE */
-    .contact-info-item {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .contact-info-item:last-child { border-bottom: none; }
-    .ci-icon {
-      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
-      background: rgba(10,191,142,0.1); border: 1px solid rgba(10,191,142,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: var(--teal);
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.7;
     }
 
-    /* WHATSAPP CTA */
-    .wa-cta-box {
-      background: linear-gradient(135deg, rgba(37,211,102,0.12), rgba(37,211,102,0.05));
-      border: 1px solid rgba(37,211,102,0.3); border-radius: 20px;
-      padding: 32px; text-align: center;
+    /* ── DIGITAL EDGE ── */
+    #digital-edge { padding: 6rem 0; }
+
+    .edge-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
-    .btn-wa {
-      background: #25d366; color: #fff; border: none;
-      padding: 14px 32px; border-radius: 50px; font-weight: 700;
-      font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;
-      transition: all 0.3s; cursor: pointer; text-decoration: none;
+
+    .edge-check {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
-    .btn-wa:hover {
-      background: #1ebe5d; box-shadow: 0 0 28px rgba(37,211,102,0.45);
-      transform: translateY(-2px); color: #fff;
+
+    .edge-feature-item h6 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
     }
+
+    .edge-feature-item p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .digital-platform-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .digital-platform-visual::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .dp-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dp-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .dp-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 10px;
+      margin-bottom: 0.6rem;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+    }
+
+    .dp-avatar {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .dp-info { flex: 1; }
+
+    .dp-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .dp-detail {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .dp-badge {
+      font-size: 0.68rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .badge-ready { background: rgba(16,185,129,0.15); color: #34d399; }
+    .badge-pending { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .badge-new { background: var(--accent-dim); color: var(--accent-2); }
+
+    /* ── IMPACT ── */
+    #impact { padding: 6rem 0; }
+
+    .impact-bg {
+      background: linear-gradient(135deg, rgba(14,165,233,0.05) 0%, transparent 60%);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .impact-bg::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* ── VISION MISSION ── */
+    #vision-mission { padding: 6rem 0; }
+
+    .vm-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      height: 100%;
+      transition: border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vm-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .vm-card:hover { border-color: var(--accent-border); }
+
+    .vm-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .vm-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .vm-card p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ── WHY HEALTHIQURE ── */
+    #why { padding: 6rem 0; }
+
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: all 0.25s;
+      margin-bottom: 1rem;
+    }
+
+    .why-item:hover {
+      border-color: var(--accent-border);
+      transform: translateX(4px);
+    }
+
+    .why-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .why-item h6 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .why-item p {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* ── LEADERSHIP ── */
+    #leadership { padding: 6rem 0; }
+
+    .leader-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .leader-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .leader-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+
+    .leader-card:hover::after { opacity: 1; }
+
+    .leader-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 2px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 2rem;
+      margin: 0 auto 1.25rem;
+    }
+
+    .leader-card h5 {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .leader-role {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .leader-quals {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── BOOKING ── */
+    #booking { padding: 6rem 0; }
+
+    .booking-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control, .form-select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-control:focus, .form-select:focus {
+      background: rgba(14,165,233,0.05);
+      border-color: var(--accent-border);
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    .form-control::placeholder { color: var(--text-muted); }
+
+    textarea.form-control { resize: none; }
+
+    .form-select option { background: #0D1424; color: var(--text-primary); }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem 2rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      width: 100%;
+      transition: all 0.25s;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-submit:hover {
+      box-shadow: 0 0 30px rgba(14,165,233,0.4);
+      transform: translateY(-1px);
+      color: #fff;
+    }
+
+    .success-msg {
+      display: none;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 12px;
+      padding: 1.25rem;
+      color: #34d399;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    #contact { padding: 6rem 0; }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: border-color 0.25s;
+    }
+
+    .contact-item:hover { border-color: var(--accent-border); }
+
+    .contact-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item h6 {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-item p, .contact-item a {
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover { color: var(--accent); }
 
     /* ── FOOTER ── */
     footer {
-      background: rgba(5,12,25,0.95);
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding: 56px 0 28px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 2rem;
     }
-    .footer-logo { font-family: 'Sora',sans-serif; font-weight: 800; font-size: 1.3rem; }
-    .footer-logo span { color: var(--teal); }
-    .footer-link {
-      color: rgba(255,255,255,0.5); font-size: 0.88rem; text-decoration: none;
-      display: block; margin-bottom: 8px; transition: color 0.3s;
-    }
-    .footer-link:hover { color: var(--teal); }
-    .footer-heading { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
-    .social-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      display: inline-flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.5); font-size: 1rem; transition: all 0.3s;
-      text-decoration: none; margin-right: 8px;
-    }
-    .social-icon:hover { background: rgba(10,191,142,0.12); border-color: var(--teal); color: var(--teal); }
 
-    /* ── FLOATING AI BOT ── */
-    #ai-bot-btn {
-      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
-      width: 60px; height: 60px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-      border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(10,191,142,0.5);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; color: #fff;
-      animation: botPulse 3s ease-in-out infinite;
-      transition: transform 0.3s;
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--text-primary);
     }
-    #ai-bot-btn:hover { transform: scale(1.1); }
-    @keyframes botPulse {
-      0%,100% { box-shadow: 0 4px 24px rgba(10,191,142,0.5); }
-      50% { box-shadow: 0 4px 36px rgba(10,191,142,0.8); }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      line-height: 1.7;
     }
-    #ai-chat-window {
-      position: fixed; bottom: 100px; right: 28px; z-index: 9998;
-      width: 340px; max-height: 480px;
-      background: rgba(10,22,40,0.97); backdrop-filter: blur(24px);
-      border: 1px solid rgba(10,191,142,0.3); border-radius: 24px;
-      display: none; flex-direction: column; overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+
+    .footer-heading {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
     }
-    #ai-chat-window.open { display: flex; }
-    .chat-header {
-      background: linear-gradient(135deg, rgba(10,191,142,0.2), rgba(10,191,142,0.05));
-      border-bottom: 1px solid rgba(10,191,142,0.2);
-      padding: 14px 18px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .chat-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: #fff; flex-shrink: 0;
-    }
-    .chat-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9rem; }
-    .chat-subtitle { font-size: 0.72rem; color: var(--teal); margin-top: 2px; }
-    .chat-close {
-      margin-left: auto; background: none; border: none;
-      color: rgba(255,255,255,0.4); font-size: 1.2rem; cursor: pointer;
+
+    .footer-link {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 0.5rem;
       transition: color 0.2s;
     }
-    .chat-close:hover { color: #fff; }
-    #chat-messages {
-      flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px;
-      scrollbar-width: thin; scrollbar-color: rgba(10,191,142,0.2) transparent;
-    }
-    .msg {
-      max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.85rem; line-height: 1.5;
-    }
-    .msg.bot { background: rgba(10,191,142,0.12); border: 1px solid rgba(10,191,142,0.2); align-self: flex-start; border-bottom-left-radius: 4px; }
-    .msg.user { background: var(--teal); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-    .chat-input-wrap {
-      padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.07);
-      display: flex; gap: 8px; align-items: center;
-    }
-    #chat-input {
-      flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      color: #fff; border-radius: 30px; padding: 10px 16px; font-size: 0.85rem; outline: none;
-      transition: border-color 0.3s; font-family: 'DM Sans', sans-serif;
-    }
-    #chat-input:focus { border-color: var(--teal); }
-    #chat-send {
-      width: 38px; height: 38px; border-radius: 50%; background: var(--teal);
-      border: none; cursor: pointer; color: #fff; font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.3s, transform 0.2s;
-    }
-    #chat-send:hover { background: var(--teal-light); transform: scale(1.1); }
-    .typing-dots span {
-      display: inline-block; width: 7px; height: 7px; border-radius: 50%;
-      background: var(--teal); margin: 0 2px;
-      animation: typDot 1.2s ease-in-out infinite;
-    }
-    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typDot { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
 
-    /* QUICK REPLIES */
-    .quick-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
-    .qchip {
-      font-size: 0.78rem; padding: 5px 12px; border-radius: 20px;
-      background: rgba(10,191,142,0.1); border: 1px solid rgba(10,191,142,0.25);
-      color: var(--teal); cursor: pointer; transition: all 0.2s;
-    }
-    .qchip:hover { background: rgba(10,191,142,0.2); }
+    .footer-link:hover { color: var(--accent); }
 
-    /* SCROLL FADE-IN */
+    .footer-bottom {
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .social-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-right: 0.4rem;
+    }
+
+    .social-icon:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent-border);
+      color: var(--accent);
+    }
+
+    /* ── WHATSAPP ── */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      z-index: 9999;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+      transition: all 0.25s;
+      animation: wa-pulse 2.5s ease-in-out infinite;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 32px rgba(37,211,102,0.55);
+      color: #fff;
+    }
+
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.35); }
+      50% { box-shadow: 0 4px 36px rgba(37,211,102,0.55); }
+    }
+
+    /* ── ANIMATIONS ── */
     .fade-up {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* MARQUEE STRIP */
-    .marquee-wrap {
-      overflow: hidden; white-space: nowrap;
-      background: rgba(10,191,142,0.07); border-top: 1px solid rgba(10,191,142,0.12); border-bottom: 1px solid rgba(10,191,142,0.12);
-      padding: 14px 0;
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .marquee-inner {
-      display: inline-block;
-      animation: marqueeScroll 30s linear infinite;
-    }
-    .marquee-inner span {
-      font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.45);
-      letter-spacing: 1px; margin: 0 40px;
-    }
-    .marquee-inner span i { color: var(--teal); margin-right: 8px; }
-    @keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    /* RESPONSIVE */
-    @media(max-width:768px){
-      .chip1,.chip2,.chip3 { display: none; }
-      .hero-img-wrap { max-width: 320px; aspect-ratio: 1/1; }
-      #ai-chat-window { width: calc(100vw - 40px); right: 20px; }
+    /* ── COUNTER ── */
+    .counter { display: inline-block; }
+
+    /* ── RESPONSIVE (base) ── */
+    @media (max-width: 768px) {
+      .hero { padding-top: 5rem; }
+      .hero-orb { width: 260px; height: 260px; }
+      .hero-orb-inner { font-size: 5rem; }
+      .hero-float-card { display: none; }
+      .booking-card { padding: 2rem 1.5rem; }
+      .stat-number { font-size: 2.2rem; }
+      .step-connector { display: none; }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-border); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 2rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .trust-item i { color: var(--accent); font-size: 0.9rem; }
+    .trust-item strong { color: var(--text-secondary); }
+
+    /* ── HOW IT WORKS ── */
+    #how-it-works { padding: 6rem 0; }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+      height: 100%;
+    }
+
+    .step-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .step-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin: 0 auto 1.25rem;
+      transition: background 0.3s;
+    }
+
+    .step-card:hover .step-icon { background: rgba(14,165,233,0.22); }
+
+    .step-card h5 {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .step-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 2rem;
+      color: var(--accent-border);
+      font-size: 1.4rem;
+    }
+
+    /* ── AFFORDABILITY BADGE ── */
+    .afford-strip {
+      background: linear-gradient(90deg, rgba(14,165,233,0.10), rgba(56,189,248,0.06));
+      border: 1px solid var(--accent-border);
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .afford-strip i { color: var(--accent); font-size: 1.2rem; flex-shrink: 0; }
+    .afford-strip strong { color: var(--text-primary); }
+
+    /* ── MOBILE STICKY CTA ── */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      padding: 0.85rem 1rem;
+      background: rgba(7,11,20,0.96);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--accent-border);
+      gap: 0.75rem;
+    }
+
+    .mobile-cta a {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .mobile-cta .cta-wa {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .mobile-cta .cta-call {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-cta { display: flex; }
+      /* push content up so it's not hidden behind sticky CTA */
+      body { padding-bottom: 76px; }
+      .whatsapp-btn { bottom: 90px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════ MESH BG ═══════════════ -->
-<div class="mesh-bg"></div>
-
-<!-- ═══════════════ NAVBAR ═══════════════ -->
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+<!-- ══════════════════════════════ NAVBAR ══════════════════════════════ -->
+<nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#" onclick="showPage('home')">
-      <i class="bi bi-heart-pulse-fill me-2" style="color:var(--teal)"></i>Arogya<span>Path</span>
-    </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+    <a class="navbar-brand" href="#">Healthi<span>Qure</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-        <li class="nav-item"><a class="nav-link active" href="#" id="nav-home" onclick="showPage('home')">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" id="nav-about" onclick="showPage('about')">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" id="nav-testimonials" onclick="showPage('testimonials')">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" id="nav-contact" onclick="showPage('contact')">Contact</a></li>
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 py-3 py-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#impact">Impact</a></li>
+        <li class="nav-item"><a class="nav-link" href="#leadership">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         <li class="nav-item ms-lg-2">
-          <a class="nav-link btn-nav-cta" href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('book-section').scrollIntoView({behavior:'smooth'}),100)">Book Now</a>
+          <a class="btn btn-get" href="#booking">Get Assistance</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════
-     HOME PAGE
-════════════════════════════════════════ -->
-<div id="page-home" class="page active">
-
-  <!-- HERO -->
-  <section id="home-hero">
-    <div class="container">
-      <div class="row align-items-center gy-5">
-        <div class="col-lg-6">
-          <div class="hero-badge"><span class="dot"></span> Serving Arunachal Pradesh</div>
-          <h1 class="hero-title">
-            Quality Healthcare <em>at Your Doorstep</em> — Anywhere
-          </h1>
-          <p class="hero-subtitle">
-            Free online doctor consultations and affordable home health visits for the people of rural Arunachal Pradesh. No travel. No waiting. Just care.
-          </p>
-          <div class="d-flex flex-wrap gap-3">
-            <button class="btn-teal" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
-              <i class="bi bi-calendar2-check"></i> Book Free Consultation
-            </button>
-            <a class="btn-outline-glass" href="https://wa.me/917002107673?text=Hello%2C%20I%20need%20a%20free%20health%20consultation." target="_blank">
-              <i class="bi bi-whatsapp"></i> WhatsApp Us
-            </a>
-          </div>
-          <div class="hero-stat-row">
-            <div class="hero-stat"><div class="num">5,200+</div><div class="lbl">Patients Served</div></div>
-            <div class="hero-stat"><div class="num">38+</div><div class="lbl">Districts Covered</div></div>
-            <div class="hero-stat"><div class="num">₹0</div><div class="lbl">Online Consult Fee</div></div>
-          </div>
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <div class="hero-badge">
+          <i class="bi bi-activity"></i>
+          Phygital Healthcare Ecosystem
         </div>
-        <div class="col-lg-6">
-          <div class="hero-visual">
-            <div class="hero-img-wrap">
-              <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80" alt="Doctor consultation" loading="lazy"/>
-              <div class="hero-img-overlay"></div>
+        <h1>Access the Right Doctor,<br /><span class="highlight">Without the Confusion</span></h1>
+        <p class="hero-sub">We guide you to the right treatment — end-to-end. Connecting patients to quality care through a Phygital ecosystem built for India's remote and underserved regions.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="https://wa.me/919830556461?text=Hello%20I%20need%20medical%20assistance" target="_blank" class="btn-primary-hq">
+            <i class="bi bi-whatsapp"></i> Get Medical Assistance
+          </a>
+          <a href="#booking" class="btn-outline-hq">
+            <i class="bi bi-calendar-check"></i> Book a Consultation
+          </a>
+        </div>
+        <div class="trust-bar">
+          <div class="trust-item"><i class="bi bi-patch-check-fill"></i><span>Recognized by <strong>AP Innovation & Investment Park</strong></span></div>
+          <div class="trust-item"><i class="bi bi-building-check"></i><span>CIN: <strong>U86909AS2026PTC029588</strong></span></div>
+          <div class="trust-item"><i class="bi bi-people-fill"></i><span><strong>5,000+</strong> Patients Served</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual">
+          <div class="hero-orb">
+            <div class="hero-orb-inner"><i class="bi bi-heart-pulse"></i></div>
+          </div>
+          <div class="hero-float-card card-f1">
+            <div class="card-icon"><i class="bi bi-person-check"></i></div>
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-muted); font-weight:400;">Patient Connected</div>
+              <div>Dr. Sharma &nbsp;<span style="color:#34d399">●</span></div>
             </div>
-            <div class="floating-chip chip1">
-              <span class="chip-icon"><i class="bi bi-shield-check"></i></span>
-              <div><div style="font-size:0.78rem;color:var(--teal)">Verified Doctors</div><div>MBBS + MD Certified</div></div>
+          </div>
+          <div class="hero-float-card card-f2">
+            <div class="card-icon"><i class="bi bi-shield-check"></i></div>
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-muted); font-weight:400;">Diagnostics Ready</div>
+              <div>Reports Available</div>
             </div>
-            <div class="floating-chip chip2">
-              <span class="chip-icon"><i class="bi bi-house-heart"></i></span>
-              <div><div style="font-size:0.78rem;color:var(--teal)">Home Visit</div><div>Only ₹800</div></div>
-            </div>
-            <div class="floating-chip chip3">
-              <span class="chip-icon"><i class="bi bi-telephone-inbound"></i></span>
-              <div><div style="font-size:0.78rem;color:var(--teal)">24/7 Support</div><div>WhatsApp Available</div></div>
+          </div>
+          <div class="hero-float-card card-f3">
+            <div class="card-icon"><i class="bi bi-geo-alt"></i></div>
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-muted); font-weight:400;">Coverage Region</div>
+              <div>Arunachal Pradesh</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-inner">
-      <span><i class="bi bi-check-circle-fill"></i>Free Online Consultation</span>
-      <span><i class="bi bi-check-circle-fill"></i>Home Visits at ₹800</span>
-      <span><i class="bi bi-check-circle-fill"></i>General Medicine</span>
-      <span><i class="bi bi-check-circle-fill"></i>Women's Health</span>
-      <span><i class="bi bi-check-circle-fill"></i>Child Health</span>
-      <span><i class="bi bi-check-circle-fill"></i>Diabetes Care</span>
-      <span><i class="bi bi-check-circle-fill"></i>Mental Wellness</span>
-      <span><i class="bi bi-check-circle-fill"></i>WhatsApp Booking</span>
-      <span><i class="bi bi-check-circle-fill"></i>Free Online Consultation</span>
-      <span><i class="bi bi-check-circle-fill"></i>Home Visits at ₹800</span>
-      <span><i class="bi bi-check-circle-fill"></i>General Medicine</span>
-      <span><i class="bi bi-check-circle-fill"></i>Women's Health</span>
-      <span><i class="bi bi-check-circle-fill"></i>Child Health</span>
-      <span><i class="bi bi-check-circle-fill"></i>Diabetes Care</span>
     </div>
   </div>
+</section>
 
-  <!-- SERVICES -->
-  <section>
-    <div class="container">
-      <div class="text-center mb-5 fade-up">
-        <div class="section-label">What We Offer</div>
-        <h2 class="section-title">Healthcare Built for <span class="teal">Rural India</span></h2>
-        <div class="divider-teal mx-auto"></div>
+<!-- ══════════════════════════════ ABOUT ══════════════════════════════ -->
+<section id="about" class="py-section">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-5 fade-up">
+        <div class="section-label">About Us</div>
+        <div class="divider-line"></div>
+        <h2 class="section-title">A New Kind of Healthcare Company</h2>
+        <p class="section-sub mb-4">HealthiQure Technologies Private Limited is an emerging Phygital healthcare startup founded in 2026, dedicated to transforming how healthcare is accessed and experienced across India — particularly in underserved and remote regions.</p>
+        <p class="section-sub">We operate at the intersection of healthcare, technology, and service integration, building a connected ecosystem that brings patients, doctors, hospitals, diagnostics, and emergency services into one seamless platform.</p>
       </div>
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3 fade-up">
-          <div class="glass-card p-4 h-100">
-            <div class="service-icon-wrap"><i class="bi bi-laptop"></i></div>
-            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">Free Online Consult</h5>
-            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Talk to a certified doctor via video or chat — completely free. Available 7 days a week for rural communities.</p>
+      <div class="col-lg-6 offset-lg-1 fade-up">
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="bi bi-phone-vibrate"></i></div>
+          <div class="about-feature-text">
+            <h6>Phygital Model</h6>
+            <p>Seamlessly blending physical presence with digital technology to deliver care where it's needed most.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 fade-up" style="transition-delay:0.1s">
-          <div class="glass-card p-4 h-100">
-            <div class="service-icon-wrap"><i class="bi bi-house-heart-fill"></i></div>
-            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">Doorstep Visit</h5>
-            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">A qualified health worker visits your home for check-ups, blood tests & basic treatment. Just ₹800 per visit.</p>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="bi bi-diagram-3"></i></div>
+          <div class="about-feature-text">
+            <h6>Ecosystem Approach</h6>
+            <p>Connecting patients, doctors, hospitals, diagnostics, and pharmacies into one unified platform.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 fade-up" style="transition-delay:0.2s">
-          <div class="glass-card p-4 h-100">
-            <div class="service-icon-wrap"><i class="bi bi-whatsapp"></i></div>
-            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">WhatsApp Health Line</h5>
-            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Send your symptoms, photos or reports on WhatsApp and get a doctor's response within 2 hours.</p>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <div class="about-feature-text">
+            <h6>Remote Region Focus</h6>
+            <p>Deep focus on India's Northeast — bringing quality care to communities historically underserved by healthcare systems.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 fade-up" style="transition-delay:0.3s">
-          <div class="glass-card p-4 h-100">
-            <div class="service-icon-wrap"><i class="bi bi-capsule"></i></div>
-            <h5 class="fw-700 mb-2" style="font-family:'Sora',sans-serif">Medicine Delivery</h5>
-            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Prescription medicines delivered to your village. Partnered with government PHCs and Jan Aushadhi centers.</p>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="bi bi-cpu"></i></div>
+          <div class="about-feature-text">
+            <h6>Technology-Driven</h6>
+            <p>Leveraging digital tools to enable faster diagnosis, better doctor decision-making, and improved patient outcomes.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DISEASE CATEGORIES -->
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="glass-card p-5 fade-up">
-        <div class="row align-items-center gy-4">
-          <div class="col-lg-4">
-            <div class="section-label">Specialties</div>
-            <h3 class="section-title" style="font-size:1.9rem">We Cover <span class="teal">All Common</span> Conditions</h3>
-            <div class="divider-teal"></div>
-            <p style="color:var(--text-muted-custom);font-size:0.9rem;line-height:1.7">From everyday fevers to chronic diseases — our doctors handle it all. Select a condition to consult.</p>
-            <button class="btn-teal mt-3" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
-              <i class="bi bi-calendar-check"></i> Book Now
-            </button>
+<!-- ══════════════════════════════ PHILOSOPHY ══════════════════════════════ -->
+<section class="philosophy-section">
+  <div class="container">
+    <div class="section-label text-center mb-3">Our Philosophy</div>
+    <p class="philosophy-quote fade-up">
+      Every patient deserves the right care at the right time, without confusion or delay.
+    </p>
+    <p class="text-center mt-4" style="color:var(--text-muted); font-size:0.88rem;">Healthcare should not be complex or inaccessible. We simplify the entire patient journey.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ HOW IT WORKS ══════════════════════════════ -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-label">Simple Process</div>
+      <div class="divider-line mx-auto"></div>
+      <h2 class="section-title">How HealthiQure Works</h2>
+      <p class="section-sub mx-auto">From your first message to full recovery support — we handle everything. No confusion, no delays.</p>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-md-4 fade-up">
+        <div class="step-card">
+          <div class="step-num">Step 01</div>
+          <div class="step-icon"><i class="bi bi-chat-dots"></i></div>
+          <h5>Tell Us Your Problem</h5>
+          <p>Reach out via WhatsApp, call, or our form. Share your symptoms, location, and any existing reports. No paperwork, no queue.</p>
+        </div>
+      </div>
+      <div class="col-md-auto d-none d-md-flex align-items-center">
+        <div class="step-connector"><i class="bi bi-arrow-right-circle-fill"></i></div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="step-card">
+          <div class="step-num">Step 02</div>
+          <div class="step-icon"><i class="bi bi-person-lines-fill"></i></div>
+          <h5>We Connect You to the Right Doctor</h5>
+          <p>Our care team matches you with the right specialist or hospital, coordinates diagnostics, and prepares your case in advance.</p>
+        </div>
+      </div>
+      <div class="col-md-auto d-none d-md-flex align-items-center">
+        <div class="step-connector"><i class="bi bi-arrow-right-circle-fill"></i></div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="step-card">
+          <div class="step-num">Step 03</div>
+          <div class="step-icon"><i class="bi bi-heart-pulse"></i></div>
+          <h5>Get Diagnosis, Treatment & Support</h5>
+          <p>Receive expert consultation, guided treatment, and continued support — whether in person, remotely, or with hospital coordination.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5 fade-up">
+      <a href="https://wa.me/919830556461?text=Hello%20I%20need%20medical%20assistance%20from%20HealthiQure." target="_blank" class="btn-primary-hq">
+        <i class="bi bi-whatsapp"></i> Start Now — It's Free to Reach Out
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SERVICES ══════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-label">What We Offer</div>
+      <div class="divider-line mx-auto"></div>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub mx-auto text-center">Comprehensive healthcare solutions across the full patient journey — from first contact to recovery.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-person-heart"></i></div>
+          <h5>Patient Care & Assistance</h5>
+          <p>End-to-end patient support including doctor selection, appointment scheduling, navigation, medical history management, and a dedicated care team.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-clipboard2-pulse"></i></div>
+          <h5>Diagnostics & Screening</h5>
+          <p>ECG, laboratory testing, imaging services, and timely reports. Accurate diagnosis is the foundation of effective treatment.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-camera-video"></i></div>
+          <h5>Telemedicine</h5>
+          <p>Breaking geographical barriers to expert care. Consult with experienced specialists and access reputed hospitals remotely — no travel needed.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-hospital"></i></div>
+          <h5>Hospital Coordination</h5>
+          <p>Smooth, stress-free treatment journeys with admission support, treatment planning, travel and accommodation arrangements, and on-ground coordination.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-tools"></i></div>
+          <h5>Medical Equipment</h5>
+          <p>Advanced diagnostic devices and technology-enabled healthcare tools to strengthen infrastructure for clinics and healthcare centers in remote areas.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-grid-1x2"></i></div>
+          <h5>Digital Health Platform</h5>
+          <p>A virtual hospital platform giving doctors complete patient history, diagnostic access, and pre-screened cases for better decision-making.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ DIGITAL EDGE ══════════════════════════════ -->
+<section id="digital-edge">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-5 fade-up">
+        <div class="section-label">Our Digital Edge</div>
+        <div class="divider-line"></div>
+        <h2 class="section-title">Redefining Clinical Practice</h2>
+        <p class="section-sub mb-4">Our Virtual Hospital Digital Platform empowers doctors and improves patient outcomes through intelligent data delivery and workflow optimization.</p>
+
+        <div class="edge-feature-item">
+          <div class="edge-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <h6>Complete Patient History Before Consultation</h6>
+            <p>Doctors receive comprehensive patient records and history ahead of every appointment — no time wasted during consultation.</p>
           </div>
-          <div class="col-lg-8">
-            <div>
-              <span class="disease-tag"><i class="bi bi-thermometer-half"></i> Fever & Flu</span>
-              <span class="disease-tag"><i class="bi bi-lungs"></i> Respiratory</span>
-              <span class="disease-tag"><i class="bi bi-droplet-half"></i> Diabetes</span>
-              <span class="disease-tag"><i class="bi bi-heart-pulse"></i> Hypertension</span>
-              <span class="disease-tag"><i class="bi bi-person-hearts"></i> Women's Health</span>
-              <span class="disease-tag"><i class="bi bi-baby"></i> Child Health</span>
-              <span class="disease-tag"><i class="bi bi-emoji-smile"></i> Mental Wellness</span>
-              <span class="disease-tag"><i class="bi bi-eye"></i> Eye Care</span>
-              <span class="disease-tag"><i class="bi bi-patch-question"></i> Skin Issues</span>
-              <span class="disease-tag"><i class="bi bi-bandaid"></i> Wound Care</span>
-              <span class="disease-tag"><i class="bi bi-activity"></i> Joint Pain</span>
-              <span class="disease-tag"><i class="bi bi-moon-stars"></i> Sleep Issues</span>
-              <span class="disease-tag"><i class="bi bi-virus"></i> Malaria / Typhoid</span>
-              <span class="disease-tag"><i class="bi bi-clipboard2-pulse"></i> General Check-up</span>
+        </div>
+        <div class="edge-feature-item">
+          <div class="edge-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <h6>Pre-Screened, Relevant Cases</h6>
+            <p>Patients arrive diagnostically prepared, enabling faster and more accurate clinical decisions.</p>
+          </div>
+        </div>
+        <div class="edge-feature-item">
+          <div class="edge-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <h6>Better Decision-Making Tools</h6>
+            <p>Integrated diagnostics, reports, and history create a richer clinical picture for improved outcomes and efficiency.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-1 fade-up">
+        <div class="digital-platform-visual">
+          <div class="dp-header">
+            <div class="dp-dot" style="background:#FF5F57;"></div>
+            <div class="dp-dot" style="background:#FEBC2E;"></div>
+            <div class="dp-dot" style="background:#28C840;"></div>
+            <span style="font-size:0.8rem; color:var(--text-muted); margin-left:0.5rem;">HealthiQure Digital Platform</span>
+          </div>
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:0.75rem; font-weight:600; letter-spacing:1px; text-transform:uppercase;">Patient Queue — Today</div>
+
+          <div class="dp-row">
+            <div class="dp-avatar"><i class="bi bi-person"></i></div>
+            <div class="dp-info">
+              <div class="dp-name">Ramesh Taye</div>
+              <div class="dp-detail">Cardiology · ECG attached · History uploaded</div>
+            </div>
+            <span class="dp-badge badge-ready">Ready</span>
+          </div>
+
+          <div class="dp-row">
+            <div class="dp-avatar"><i class="bi bi-person"></i></div>
+            <div class="dp-info">
+              <div class="dp-name">Pema Dorji</div>
+              <div class="dp-detail">Orthopedics · MRI attached · Pre-screened</div>
+            </div>
+            <span class="dp-badge badge-ready">Ready</span>
+          </div>
+
+          <div class="dp-row">
+            <div class="dp-avatar"><i class="bi bi-person"></i></div>
+            <div class="dp-info">
+              <div class="dp-name">Ananya Borah</div>
+              <div class="dp-detail">General · Lab reports pending</div>
+            </div>
+            <span class="dp-badge badge-pending">Pending</span>
+          </div>
+
+          <div class="dp-row">
+            <div class="dp-avatar"><i class="bi bi-person"></i></div>
+            <div class="dp-info">
+              <div class="dp-name">Mohan Garo</div>
+              <div class="dp-detail">Telemedicine consult · New patient</div>
+            </div>
+            <span class="dp-badge badge-new">New</span>
+          </div>
+
+          <div style="margin-top:1.25rem; padding:1rem; background:rgba(14,165,233,0.07); border-radius:10px; border:1px solid var(--accent-border);">
+            <div style="font-size:0.75rem; color:var(--accent); font-weight:600; margin-bottom:0.4rem;"><i class="bi bi-lightning-charge-fill me-1"></i>Platform Insight</div>
+            <div style="font-size:0.8rem; color:var(--text-secondary);">Avg. consultation time reduced by <strong style="color:var(--text-primary);">40%</strong> with pre-loaded patient data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ IMPACT ══════════════════════════════ -->
+<section id="impact">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-label">Our Impact</div>
+      <div class="divider-line mx-auto"></div>
+      <h2 class="section-title">Making a Meaningful Difference</h2>
+      <p class="section-sub mx-auto">Real impact in underserved communities — building a healthier Northeast India.</p>
+    </div>
+    <div class="impact-bg fade-up">
+      <div class="row g-0 justify-content-center">
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number"><span class="counter" data-target="5000">0</span>+</div>
+            <div class="stat-label">Patients Served</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number"><span class="counter" data-target="12">0</span>+</div>
+            <div class="stat-label">Districts Covered</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number"><span class="counter" data-target="80">0</span>+</div>
+            <div class="stat-label">Doctor Network</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number"><span class="counter" data-target="3000">0</span>+</div>
+            <div class="stat-label">Diagnostics Enabled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ VISION & MISSION ══════════════════════════════ -->
+<section id="vision-mission">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-label">Direction</div>
+      <div class="divider-line mx-auto"></div>
+      <h2 class="section-title">Vision & Mission</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 fade-up">
+        <div class="vm-card">
+          <div class="vm-icon"><i class="bi bi-eye"></i></div>
+          <h4>Our Vision</h4>
+          <p>To build a connected healthcare ecosystem where quality and timely treatment is not limited by geography. We envision a future where every patient — regardless of location — has access to the right care at the right time.</p>
+        </div>
+      </div>
+      <div class="col-md-6 fade-up">
+        <div class="vm-card">
+          <div class="vm-icon"><i class="bi bi-bullseye"></i></div>
+          <h4>Our Mission</h4>
+          <p>To simplify healthcare delivery by combining technology, medical expertise, and compassionate service — ensuring timely, affordable, and effective care for all. We are not just delivering services; we are building a healthcare ecosystem that empowers communities and saves lives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ WHY HEALTHIQURE ══════════════════════════════ -->
+<section id="why">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-4 fade-up">
+        <div class="section-label">Why Us</div>
+        <div class="divider-line"></div>
+        <h2 class="section-title">Why HealthiQure?</h2>
+        <p class="section-sub">We are not just another healthcare service. We are a mission-driven platform built to serve communities that the healthcare system has left behind.</p>
+      </div>
+      <div class="col-lg-7 offset-lg-1">
+        <div class="row g-3">
+          <div class="col-12 fade-up">
+            <div class="why-item">
+              <div class="why-icon"><i class="bi bi-geo"></i></div>
+              <div>
+                <h6>Remote Region Focus</h6>
+                <p>Dedicated to underserved and remote communities across India's Northeast, where healthcare access has historically been limited.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 fade-up">
+            <div class="why-item">
+              <div class="why-icon"><i class="bi bi-arrow-repeat"></i></div>
+              <div>
+                <h6>End-to-End Patient Support</h6>
+                <p>From first consultation to recovery — we guide every patient through their complete healthcare journey.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 fade-up">
+            <div class="why-item">
+              <div class="why-icon"><i class="bi bi-cpu-fill"></i></div>
+              <div>
+                <h6>Technology-Enabled Care</h6>
+                <p>Digital tools that improve clinical outcomes, reduce wait times, and make healthcare delivery more efficient for doctors and patients.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 fade-up">
+            <div class="why-item">
+              <div class="why-icon"><i class="bi bi-currency-rupee"></i></div>
+              <div>
+                <h6>Affordable & Accessible</h6>
+                <p>Making quality healthcare economically viable for patients who cannot afford premium private healthcare.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 fade-up">
+            <div class="why-item">
+              <div class="why-icon"><i class="bi bi-people"></i></div>
+              <div>
+                <h6>Strong Network</h6>
+                <p>A growing network of trusted doctors, hospitals, and diagnostic centers unified under one platform.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PRICING -->
-  <section>
-    <div class="container">
-      <div class="text-center mb-5 fade-up">
-        <div class="section-label">Transparent Pricing</div>
-        <h2 class="section-title">Simple, <span class="teal">Affordable</span> Plans</h2>
-        <div class="divider-teal mx-auto"></div>
-      </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-5 fade-up">
-          <div class="glass-card price-card-free p-5 h-100">
-            <div class="section-label mb-1">Online</div>
-            <div class="price-badge"><sup>₹</sup>0 <span style="font-size:1rem;color:var(--text-muted-custom);font-weight:400">/ consult</span></div>
-            <div class="mt-1 mb-4" style="color:var(--teal);font-size:0.85rem;font-weight:600">Completely Free</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>Video or Chat consultation</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>WhatsApp health support</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>Digital prescription</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--teal)"></i>Follow-up within 48 hrs</div>
-            <div class="price-feature"><i class="bi bi-x me-2" style="color:rgba(255,255,255,0.2)"></i>Physical examination</div>
-            <div class="price-feature"><i class="bi bi-x me-2" style="color:rgba(255,255,255,0.2)"></i>Blood test at home</div>
-            <button class="btn-teal w-100 mt-4" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
-              Book Free Consult
-            </button>
+<!-- ══════════════════════════════ LEADERSHIP ══════════════════════════════ -->
+<section id="leadership">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-label">Leadership</div>
+      <div class="divider-line mx-auto"></div>
+      <h2 class="section-title">The People Behind HealthiQure</h2>
+      <p class="section-sub mx-auto">Driven by experience, guided by empathy.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="leader-card">
+          <div class="leader-avatar"><i class="bi bi-person-badge"></i></div>
+          <h5>Er. Ghanshyam Longkho</h5>
+          <div class="leader-role">Founder & Chief Executive Officer</div>
+          <div class="leader-quals">
+            <div class="mb-1"><i class="bi bi-mortarboard me-2" style="color:var(--accent);"></i>BE Mechanical — Jadavpur University, Kolkata</div>
+            <div class="mb-1"><i class="bi bi-briefcase me-2" style="color:var(--accent);"></i>VIEDP — Dubai & Lexington</div>
+            <div style="margin-top:0.75rem; color:var(--text-muted); font-size:0.8rem;">Driving vision, innovation, and healthcare accessibility across India's remote regions.</div>
           </div>
         </div>
-        <div class="col-md-5 fade-up" style="transition-delay:0.15s">
-          <div class="glass-card price-card-paid p-5 h-100" style="position:relative">
-            <div style="position:absolute;top:-14px;right:24px;background:var(--price-gold);color:#000;font-size:0.75rem;font-weight:700;padding:5px 16px;border-radius:20px;letter-spacing:1px">POPULAR</div>
-            <div class="section-label mb-1" style="color:var(--price-gold)">Home Visit</div>
-            <div class="price-badge" style="color:var(--price-gold)"><sup>₹</sup>800 <span style="font-size:1rem;color:var(--text-muted-custom);font-weight:400">/ visit</span></div>
-            <div class="mt-1 mb-4" style="color:var(--price-gold);font-size:0.85rem;font-weight:600">Doorstep Service</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>In-person doctor visit</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Physical examination</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Basic blood & vitals test</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Medication guidance</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Follow-up within 24 hrs</div>
-            <div class="price-feature"><i class="bi bi-check2 me-2" style="color:var(--price-gold)"></i>Includes online consult too</div>
-            <button class="btn-teal w-100 mt-4" style="background:var(--price-gold);color:#000" onclick="document.getElementById('book-section').scrollIntoView({behavior:'smooth'})">
-              Book Home Visit
-            </button>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="leader-card">
+          <div class="leader-avatar"><i class="bi bi-person-badge"></i></div>
+          <h5>Sanghamitra Kakati</h5>
+          <div class="leader-role">Co-Founder & Chief Operating Officer</div>
+          <div class="leader-quals">
+            <div class="mb-1"><i class="bi bi-mortarboard me-2" style="color:var(--accent);"></i>B.Sc Biotechnology — St. Anthony's College, Shillong</div>
+            <div class="mb-1"><i class="bi bi-briefcase me-2" style="color:var(--accent);"></i>PG EDP HR Management — XLRI, Jamshedpur</div>
+            <div style="margin-top:0.75rem; color:var(--text-muted); font-size:0.8rem;">Leading operations, strategy, and patient experience with precision and compassion.</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BOOK FORM SECTION -->
-  <section id="book-section">
-    <div class="container">
-      <div class="row gy-5 align-items-start">
-        <div class="col-lg-5 fade-up">
-          <div class="section-label">Book Appointment</div>
-          <h2 class="section-title">Get Care <span class="teal">Right Now</span></h2>
-          <div class="divider-teal"></div>
-          <p style="color:var(--text-muted-custom);font-size:0.93rem;line-height:1.8;margin-bottom:28px">
-            Fill the form for a free online consultation — or book a home visit at just ₹800. Our team will confirm within 1 hour.
-          </p>
-          <!-- WhatsApp CTA -->
-          <div class="wa-cta-box">
-            <i class="bi bi-whatsapp" style="font-size:2.2rem;color:#25d366"></i>
-            <p class="my-2 fw-600" style="font-size:0.95rem">Prefer WhatsApp? Message us directly!</p>
-            <p style="font-size:0.82rem;color:var(--text-muted-custom);margin-bottom:16px">Send your name, village & symptoms — we'll assign a doctor within 2 hours.</p>
-            <a class="btn-wa" href="https://wa.me/917002107673?text=Hello%20ArogyaPath%2C%20I%20need%20a%20health%20consultation." target="_blank">
-              <i class="bi bi-whatsapp"></i> Open WhatsApp
+<!-- ══════════════════════════════ BOOKING ══════════════════════════════ -->
+<section id="booking">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5 fade-up">
+          <div class="section-label">Get Help</div>
+          <div class="divider-line mx-auto"></div>
+          <h2 class="section-title">Book a Consultation</h2>
+          <p class="section-sub mx-auto">Fill in your details and our care team will reach out to you within 24 hours. For immediate help, use WhatsApp below.</p>
+        </div>
+        <div class="booking-card fade-up">
+          <div class="afford-strip">
+            <i class="bi bi-shield-check"></i>
+            <span><strong>Affordable, transparent healthcare guidance</strong> — no hidden costs. Our care team will reach out within 24 hours.</span>
+          </div>
+          <form id="bookingForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" placeholder="Your full name" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" placeholder="+91 XXXXXXXXXX" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Location / District</label>
+                <input type="text" class="form-control" placeholder="Your city or district" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Service Needed</label>
+                <select class="form-select">
+                  <option value="">Select a service...</option>
+                  <option>Patient Care & Assistance</option>
+                  <option>Diagnostics & Screening</option>
+                  <option>Telemedicine Consultation</option>
+                  <option>Hospital Coordination</option>
+                  <option>Medical Equipment</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Describe Your Medical Concern</label>
+                <textarea class="form-control" rows="4" placeholder="Brief description of your health concern or what assistance you need..."></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-submit">
+                  <i class="bi bi-send me-2"></i>Request Assistance
+                </button>
+              </div>
+              <div class="col-12">
+                <div class="success-msg" id="successMsg">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  WhatsApp opened with your details! Our care team will respond within a few hours. You can also call us at +91 98305 56461.
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="text-center mt-4 pt-3" style="border-top: 1px solid var(--border);">
+            <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:0.75rem;">For immediate assistance, contact us directly:</p>
+            <a href="https://wa.me/919830556461?text=Hello%20I%20need%20medical%20assistance%20from%20HealthiQure." target="_blank" class="btn-primary-hq me-2">
+              <i class="bi bi-whatsapp"></i> WhatsApp Us
+            </a>
+            <a href="tel:+919830556461" class="btn-outline-hq">
+              <i class="bi bi-telephone"></i> Call Now
             </a>
           </div>
         </div>
-        <div class="col-lg-7 fade-up" style="transition-delay:0.15s">
-          <div class="glass-card p-4 p-lg-5">
-            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:24px">Consultation Booking Form</h5>
-            <div class="form-glass" id="bookForm">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <div class="form-label-custom">Full Name *</div>
-                  <input type="text" placeholder="Your full name" id="f-name"/>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-label-custom">Phone / WhatsApp *</div>
-                  <input type="tel" placeholder="+91 XXXXX XXXXX" id="f-phone"/>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-label-custom">Village / Town *</div>
-                  <input type="text" placeholder="Your village name" id="f-village"/>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-label-custom">District *</div>
-                  <select id="f-district">
-                    <option value="">Select district</option>
-                    <option>Itanagar (Capital)</option>
-                    <option>Tawang</option>
-                    <option>West Kameng</option>
-                    <option>East Kameng</option>
-                    <option>Papum Pare</option>
-                    <option>Kurung Kumey</option>
-                    <option>Subansiri</option>
-                    <option>West Siang</option>
-                    <option>East Siang</option>
-                    <option>Dibang Valley</option>
-                    <option>Lohit</option>
-                    <option>Tirap</option>
-                    <option>Changlang</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <div class="form-label-custom">Service Type *</div>
-                  <select id="f-service">
-                    <option value="">Choose service</option>
-                    <option>Free Online Consultation</option>
-                    <option>Doorstep Health Visit (₹800)</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <div class="form-label-custom">Health Concern / Disease</div>
-                  <select id="f-disease">
-                    <option value="">Select condition</option>
-                    <option>Fever & Flu</option>
-                    <option>Respiratory / Breathing</option>
-                    <option>Diabetes Management</option>
-                    <option>Hypertension / BP</option>
-                    <option>Women's Health</option>
-                    <option>Child Health</option>
-                    <option>Mental Wellness</option>
-                    <option>Skin Issues</option>
-                    <option>Joint Pain</option>
-                    <option>Malaria / Typhoid</option>
-                    <option>General Check-up</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <div class="form-label-custom">Describe Your Symptoms</div>
-                  <textarea rows="3" placeholder="Briefly describe your symptoms or health concern..." id="f-symptoms"></textarea>
-                </div>
-                <div class="col-12">
-                  <button class="btn-teal w-100" onclick="submitBooking()" style="justify-content:center;padding:15px">
-                    <i class="bi bi-send-check"></i> Submit Booking Request
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div id="form-success" style="display:none;text-align:center;padding:32px 0">
-              <div style="font-size:3rem;color:var(--teal);margin-bottom:12px"><i class="bi bi-check-circle-fill"></i></div>
-              <h5 style="font-family:'Sora',sans-serif;font-weight:700">Booking Received!</h5>
-              <p style="color:var(--text-muted-custom);font-size:0.9rem">We'll confirm via WhatsApp within 1 hour. Thank you!</p>
-              <button class="btn-teal mt-3" onclick="resetForm()" style="justify-content:center">Book Another</button>
-            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ CONTACT ══════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-label">Contact</div>
+      <div class="divider-line mx-auto"></div>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+          <div>
+            <h6>Email</h6>
+            <a href="mailto:info@healthiqure.com">info@healthiqure.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-telephone"></i></div>
+          <div>
+            <h6>Phone</h6>
+            <a href="tel:+919830556461">+91 98305 56461</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+          <div>
+            <h6>Registered Office</h6>
+            <p>Flat 1D, Gitanjali Heights, Mother Teresa Road, Guwahati – 781020, Assam</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="bi bi-building"></i></div>
+          <div>
+            <h6>Corporate Office</h6>
+            <p>AC Complex, Bordumsa – 792056, Arunachal Pradesh, India</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- MINI TESTIMONIALS ON HOME -->
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="text-center mb-5 fade-up">
-        <div class="section-label">Voices from the Community</div>
-        <h2 class="section-title">What People <span class="teal">Say</span></h2>
-        <div class="divider-teal mx-auto"></div>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4 fade-up">
-          <div class="glass-card p-4 h-100">
-            <div class="stars mb-3">★★★★★</div>
-            <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;margin-bottom:20px">"My daughter had high fever and the nearest hospital is 3 hours away. ArogyaPath's doctor consulted us on WhatsApp the same night. Life saving!"</p>
-            <div class="d-flex align-items-center gap-3">
-              <div class="avatar-ring"><img src="https://i.pravatar.cc/80?img=47" alt=""/></div>
-              <div><div style="font-weight:600;font-size:0.9rem">Dorjee Wangdi</div><div style="font-size:0.78rem;color:var(--teal)">Tawang District</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 fade-up" style="transition-delay:0.1s">
-          <div class="glass-card p-4 h-100">
-            <div class="stars mb-3">★★★★★</div>
-            <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;margin-bottom:20px">"The home visit was very affordable. The health worker came to our village, did tests and explained everything in our language. Amazing service."</p>
-            <div class="d-flex align-items-center gap-3">
-              <div class="avatar-ring"><img src="https://i.pravatar.cc/80?img=32" alt=""/></div>
-              <div><div style="font-weight:600;font-size:0.9rem">Yalum Lego</div><div style="font-size:0.78rem;color:var(--teal)">West Siang</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 fade-up" style="transition-delay:0.2s">
-          <div class="glass-card p-4 h-100">
-            <div class="stars mb-3">★★★★★</div>
-            <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;margin-bottom:20px">"For us elderly people, booking on WhatsApp and getting free advice from a real doctor is a blessing. No more missing work for hospital trips."</p>
-            <div class="d-flex align-items-center gap-3">
-              <div class="avatar-ring"><img src="https://i.pravatar.cc/80?img=60" alt=""/></div>
-              <div><div style="font-weight:600;font-size:0.9rem">Pema Khandu</div><div style="font-size:0.78rem;color:var(--teal)">Lohit Valley</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-4">
-        <button class="btn-outline-glass" onclick="showPage('testimonials')"><i class="bi bi-chat-square-quote"></i> Read All Testimonials</button>
-      </div>
-    </div>
-  </section>
-
-</div><!-- /page-home -->
-
-<!-- ════════════════════════════════════════
-     ABOUT US PAGE
-════════════════════════════════════════ -->
-<div id="page-about" class="page">
-  <section style="padding-top:130px">
-    <div class="container">
-      <div class="row align-items-center gy-5">
-        <div class="col-lg-6 fade-up">
-          <div class="section-label">Our Story</div>
-          <h1 class="section-title">Healthcare Should Not Depend on <span class="teal">Geography</span></h1>
-          <div class="divider-teal"></div>
-          <p style="color:var(--text-muted-custom);line-height:1.85;margin-bottom:16px">
-            ArogyaPath was founded in 2022 by a group of doctors and social workers from Arunachal Pradesh who witnessed firsthand how remote geography meant preventable deaths. Villages that took 6+ hours by road to reach a hospital. Mothers delivering without medical help. Children dying of treatable diseases.
-          </p>
-          <p style="color:var(--text-muted-custom);line-height:1.85">
-            We built ArogyaPath to bridge that gap using technology, affordable pricing, and the power of community health workers. Our mission: make quality healthcare available to every household in Arunachal Pradesh — free online and at ₹800 at your doorstep.
-          </p>
-        </div>
-        <div class="col-lg-6 fade-up" style="transition-delay:0.15s">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-            <div class="glass-card p-4 text-center">
-              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">2022</div>
-              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Year Founded</div>
-            </div>
-            <div class="glass-card p-4 text-center">
-              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">5200+</div>
-              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Patients Served</div>
-            </div>
-            <div class="glass-card p-4 text-center">
-              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">38+</div>
-              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Districts Reached</div>
-            </div>
-            <div class="glass-card p-4 text-center">
-              <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--teal)">18</div>
-              <div style="font-size:0.82rem;color:var(--text-muted-custom)">Doctors on Team</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MISSION VALUES -->
-  <section>
-    <div class="container">
-      <div class="text-center mb-5 fade-up">
-        <div class="section-label">Our Values</div>
-        <h2 class="section-title">What <span class="teal">Drives Us</span></h2>
-        <div class="divider-teal mx-auto"></div>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4 fade-up">
-          <div class="glass-card p-4 h-100">
-            <div class="service-icon-wrap"><i class="bi bi-people-fill"></i></div>
-            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:10px">Community First</h5>
-            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">We design every service around the actual lives of people in remote Arunachal — their language, connectivity, and economic reality.</p>
-          </div>
-        </div>
-        <div class="col-md-4 fade-up" style="transition-delay:0.1s">
-          <div class="glass-card p-4 h-100">
-            <div class="service-icon-wrap"><i class="bi bi-shield-heart"></i></div>
-            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:10px">Dignity in Care</h5>
-            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">Every patient deserves respectful, non-judgmental care. Our doctors and health workers are trained in cultural sensitivity.</p>
-          </div>
-        </div>
-        <div class="col-md-4 fade-up" style="transition-delay:0.2s">
-          <div class="glass-card p-4 h-100">
-            <div class="service-icon-wrap"><i class="bi bi-transparency"></i></div>
-            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:10px">Full Transparency</h5>
-            <p style="color:var(--text-muted-custom);font-size:0.88rem;line-height:1.7">No hidden fees. No unnecessary referrals. Just honest healthcare at fair prices, always.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="text-center mb-5 fade-up">
-        <div class="section-label">Meet the Team</div>
-        <h2 class="section-title">The Doctors Behind <span class="teal">ArogyaPath</span></h2>
-        <div class="divider-teal mx-auto"></div>
-      </div>
-      <div class="row g-4">
-        <div class="col-6 col-md-3 fade-up">
-          <div class="glass-card p-4 text-center team-card h-100">
-            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=12" alt=""/></div>
-            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Rina Tashi</div>
-            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS, MD – General Medicine</div>
-            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Founder & Medical Director</div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3 fade-up" style="transition-delay:0.1s">
-          <div class="glass-card p-4 text-center team-card h-100">
-            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=15" alt=""/></div>
-            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Anil Perme</div>
-            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS – Pediatrics</div>
-            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Child Health Lead</div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3 fade-up" style="transition-delay:0.2s">
-          <div class="glass-card p-4 text-center team-card h-100">
-            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=25" alt=""/></div>
-            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Meena Gadi</div>
-            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS, DGO – Women's Health</div>
-            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Obstetrics Specialist</div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3 fade-up" style="transition-delay:0.3s">
-          <div class="glass-card p-4 text-center team-card h-100">
-            <div class="avatar-lg"><img src="https://i.pravatar.cc/120?img=8" alt=""/></div>
-            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem">Dr. Zomla Kri</div>
-            <div style="font-size:0.78rem;color:var(--teal);margin-top:4px">MBBS – Psychiatry</div>
-            <div style="font-size:0.78rem;color:var(--text-muted-custom);margin-top:6px">Mental Wellness Lead</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div><!-- /page-about -->
-
-<!-- ════════════════════════════════════════
-     TESTIMONIALS PAGE
-════════════════════════════════════════ -->
-<div id="page-testimonials" class="page">
-  <section style="padding-top:130px">
-    <div class="container">
-      <div class="text-center mb-5 fade-up">
-        <div class="section-label">Real Stories</div>
-        <h1 class="section-title">Voices from <span class="teal">Across Arunachal</span></h1>
-        <div class="divider-teal mx-auto"></div>
-        <p style="color:var(--text-muted-custom);max-width:560px;margin:0 auto;font-size:0.95rem">Real experiences from real people in villages and towns across Arunachal Pradesh.</p>
-      </div>
-      <div class="row g-4" id="testimonialGrid">
-        <!-- Generated dynamically -->
-      </div>
-    </div>
-  </section>
-  <!-- Rating Overview -->
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="glass-card p-5 fade-up text-center">
-        <div style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:var(--teal);line-height:1">4.9</div>
-        <div class="stars" style="font-size:1.4rem;margin:8px 0">★★★★★</div>
-        <div style="color:var(--text-muted-custom);font-size:0.9rem">Based on 1,240+ patient reviews</div>
-        <div class="row mt-4 g-3 justify-content-center">
-          <div class="col-md-2 col-4">
-            <div style="font-size:0.8rem;color:var(--text-muted-custom);margin-bottom:6px">5 ★</div>
-            <div style="background:rgba(255,255,255,0.08);border-radius:8px;height:8px;overflow:hidden">
-              <div style="background:var(--teal);height:100%;width:92%"></div>
-            </div>
-          </div>
-          <div class="col-md-2 col-4">
-            <div style="font-size:0.8rem;color:var(--text-muted-custom);margin-bottom:6px">4 ★</div>
-            <div style="background:rgba(255,255,255,0.08);border-radius:8px;height:8px;overflow:hidden">
-              <div style="background:var(--teal);height:100%;width:6%"></div>
-            </div>
-          </div>
-          <div class="col-md-2 col-4">
-            <div style="font-size:0.8rem;color:var(--text-muted-custom);margin-bottom:6px">3 ★</div>
-            <div style="background:rgba(255,255,255,0.08);border-radius:8px;height:8px;overflow:hidden">
-              <div style="background:var(--teal);height:100%;width:2%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div><!-- /page-testimonials -->
-
-<!-- ════════════════════════════════════════
-     CONTACT PAGE
-════════════════════════════════════════ -->
-<div id="page-contact" class="page">
-  <section style="padding-top:130px">
-    <div class="container">
-      <div class="text-center mb-5 fade-up">
-        <div class="section-label">Get in Touch</div>
-        <h1 class="section-title">We're <span class="teal">Always Here</span> for You</h1>
-        <div class="divider-teal mx-auto"></div>
-      </div>
-      <div class="row g-5 align-items-start">
-        <div class="col-lg-5 fade-up">
-          <div class="glass-card p-4">
-            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:20px">Contact Information</h5>
-            <div class="contact-info-item">
-              <div class="ci-icon"><i class="bi bi-telephone-fill"></i></div>
-              <div>
-                <div style="font-weight:600;margin-bottom:2px">Phone / WhatsApp</div>
-                <div style="color:var(--text-muted-custom);font-size:0.88rem">+91 94360 XXXXX</div>
-                <div style="color:var(--text-muted-custom);font-size:0.88rem">Mon–Sun, 6 AM – 10 PM</div>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="ci-icon"><i class="bi bi-envelope-fill"></i></div>
-              <div>
-                <div style="font-weight:600;margin-bottom:2px">Email</div>
-                <div style="color:var(--text-muted-custom);font-size:0.88rem">care@arogyapath.in</div>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="ci-icon"><i class="bi bi-geo-alt-fill"></i></div>
-              <div>
-                <div style="font-weight:600;margin-bottom:2px">Head Office</div>
-                <div style="color:var(--text-muted-custom);font-size:0.88rem">Itanagar, Arunachal Pradesh – 791111</div>
-              </div>
-            </div>
-            <div class="contact-info-item">
-              <div class="ci-icon"><i class="bi bi-clock-fill"></i></div>
-              <div>
-                <div style="font-weight:600;margin-bottom:2px">Online Consult Hours</div>
-                <div style="color:var(--text-muted-custom);font-size:0.88rem">24 × 7 — WhatsApp always open</div>
-              </div>
-            </div>
-          </div>
-          <div class="wa-cta-box mt-4">
-            <i class="bi bi-whatsapp" style="font-size:2rem;color:#25d366"></i>
-            <p class="my-2 fw-600">Fastest response via WhatsApp</p>
-            <a class="btn-wa" href="https://wa.me/917002107673?text=Hello%20ArogyaPath" target="_blank">
-              <i class="bi bi-whatsapp"></i> Message Us Now
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-7 fade-up" style="transition-delay:0.15s">
-          <div class="glass-card p-4 p-lg-5">
-            <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-bottom:24px">Send Us a Message</h5>
-            <div class="form-glass" id="contactForm">
-              <div class="form-label-custom">Your Name *</div>
-              <input type="text" placeholder="Full name" id="c-name"/>
-              <div class="form-label-custom">Phone / Email *</div>
-              <input type="text" placeholder="Phone number or email" id="c-contact"/>
-              <div class="form-label-custom">Subject</div>
-              <select id="c-subject">
-                <option>General Inquiry</option>
-                <option>Booking Help</option>
-                <option>Feedback</option>
-                <option>Partnership / NGO Collaboration</option>
-                <option>Media / Press</option>
-              </select>
-              <div class="form-label-custom" style="margin-top:4px">Message *</div>
-              <textarea rows="4" placeholder="Write your message here..." id="c-msg"></textarea>
-              <button class="btn-teal w-100" onclick="submitContact()" style="justify-content:center;padding:15px">
-                <i class="bi bi-send"></i> Send Message
-              </button>
-            </div>
-            <div id="contact-success" style="display:none;text-align:center;padding:32px 0">
-              <div style="font-size:3rem;color:var(--teal)"><i class="bi bi-check-circle-fill"></i></div>
-              <h5 style="font-family:'Sora',sans-serif;font-weight:700;margin-top:12px">Message Sent!</h5>
-              <p style="color:var(--text-muted-custom);font-size:0.9rem">We'll get back to you within 24 hours.</p>
-              <button class="btn-teal mt-3" onclick="resetContact()" style="justify-content:center">Send Another</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div><!-- /page-contact -->
-
-<!-- ═══════════════ FOOTER ═══════════════ -->
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
 <footer>
   <div class="container">
-    <div class="row g-4 mb-5">
+    <div class="row gy-4">
       <div class="col-lg-4">
-        <div class="footer-logo mb-3"><i class="bi bi-heart-pulse-fill me-2" style="color:var(--teal)"></i>Arogya<span>Path</span></div>
-        <p style="color:rgba(255,255,255,0.45);font-size:0.87rem;line-height:1.8;max-width:280px">Free online consultations & affordable home health visits for rural Arunachal Pradesh.</p>
+        <div class="footer-logo">Healthi<span>Qure</span> Technologies</div>
+        <div class="footer-desc">Right Healthcare, Simplified.<br />A Phygital healthcare ecosystem connecting patients to quality care across India — especially in remote and underserved regions.</div>
         <div class="mt-3">
-          <a class="social-icon" href="#"><i class="bi bi-facebook"></i></a>
-          <a class="social-icon" href="#"><i class="bi bi-instagram"></i></a>
-          <a class="social-icon" href="https://wa.me/917002107673" target="_blank"><i class="bi bi-whatsapp"></i></a>
-          <a class="social-icon" href="#"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/919830556461" target="_blank" class="social-icon"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
-      <div class="col-6 col-lg-2">
-        <div class="footer-heading">Pages</div>
-        <a class="footer-link" href="#" onclick="showPage('home')">Home</a>
-        <a class="footer-link" href="#" onclick="showPage('about')">About Us</a>
-        <a class="footer-link" href="#" onclick="showPage('testimonials')">Testimonials</a>
-        <a class="footer-link" href="#" onclick="showPage('contact')">Contact</a>
+      <div class="col-6 col-lg-2 offset-lg-1">
+        <div class="footer-heading">Company</div>
+        <a class="footer-link" href="#about">About Us</a>
+        <a class="footer-link" href="#services">Services</a>
+        <a class="footer-link" href="#impact">Impact</a>
+        <a class="footer-link" href="#leadership">Leadership</a>
+        <a class="footer-link" href="#vision-mission">Vision & Mission</a>
       </div>
       <div class="col-6 col-lg-2">
         <div class="footer-heading">Services</div>
-        <a class="footer-link" href="#">Free Consultation</a>
-        <a class="footer-link" href="#">Home Visit ₹800</a>
-        <a class="footer-link" href="#">WhatsApp Health</a>
-        <a class="footer-link" href="#">Medicine Delivery</a>
+        <a class="footer-link" href="#services">Patient Care</a>
+        <a class="footer-link" href="#services">Diagnostics</a>
+        <a class="footer-link" href="#services">Telemedicine</a>
+        <a class="footer-link" href="#services">Hospital Coordination</a>
+        <a class="footer-link" href="#services">Digital Platform</a>
       </div>
-      <div class="col-lg-4">
-        <div class="footer-heading">Emergency Contact</div>
-        <div class="glass-card p-3" style="border-color:rgba(255,100,100,0.3)!important">
-          <div style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:4px">24/7 Emergency WhatsApp</div>
-          <div style="font-weight:700;font-size:1.1rem;color:#ff6b6b"><i class="bi bi-telephone-fill me-2"></i>+91 94360 XXXXX</div>
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:6px">For urgent health situations only</div>
+      <div class="col-lg-3">
+        <div class="footer-heading">Company Details</div>
+        <div class="footer-desc" style="margin-top:0;">
+          <strong style="color:var(--text-secondary);">CIN:</strong> U86909AS2026PTC029588<br />
+          <strong style="color:var(--text-secondary);">Email:</strong> info@healthiqure.com<br />
+          <strong style="color:var(--text-secondary);">Phone:</strong> +91 98305 56461<br />
+          <strong style="color:var(--text-secondary);">Web:</strong> www.healthiqure.com
         </div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-      <div style="font-size:0.8rem;color:rgba(255,255,255,0.3)">© 2025 ArogyaPath. All rights reserved. Serving Arunachal Pradesh.</div>
-      <div style="font-size:0.8rem;color:rgba(255,255,255,0.3)">Privacy Policy · Terms of Service</div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div>© 2026 HealthiQure Technologies Private Limited. All rights reserved.</div>
+      <div style="color:var(--accent); font-weight:600; font-size:0.82rem;">Right Healthcare, Simplified</div>
     </div>
   </div>
 </footer>
 
-<!-- ═══════════════ AI BOT ═══════════════ -->
-<button id="ai-bot-btn" title="Health Assistant" onclick="toggleBot()">
-  <i class="bi bi-robot"></i>
-</button>
+<!-- ══════════════════════════════ WHATSAPP BUTTON ══════════════════════════════ -->
+<a href="https://wa.me/919830556461?text=Hello%20I%20need%20medical%20assistance%20from%20HealthiQure." target="_blank" class="whatsapp-btn" title="Chat with Doctor Now">
+  <i class="bi bi-whatsapp"></i>
+</a>
 
-<div id="ai-chat-window">
-  <div class="chat-header">
-    <div class="chat-avatar"><i class="bi bi-robot"></i></div>
-    <div>
-      <div class="chat-title">HealthBot</div>
-      <div class="chat-subtitle">● Online – Ask me anything</div>
-    </div>
-    <button class="chat-close" onclick="toggleBot()"><i class="bi bi-x-lg"></i></button>
-  </div>
-  <div id="chat-messages"></div>
-  <div class="quick-chips" id="quickChips">
-    <span class="qchip" onclick="sendQuick('Book a consultation')">Book consult</span>
-    <span class="qchip" onclick="sendQuick('Home visit details')">Home visit</span>
-    <span class="qchip" onclick="sendQuick('What diseases do you treat?')">Diseases</span>
-    <span class="qchip" onclick="sendQuick('WhatsApp number')">WhatsApp</span>
-  </div>
-  <div class="chat-input-wrap">
-    <input id="chat-input" placeholder="Ask about symptoms, services..." onkeydown="if(event.key==='Enter')sendChat()"/>
-    <button id="chat-send" onclick="sendChat()"><i class="bi bi-send-fill"></i></button>
-  </div>
+<!-- ══════════════════════════════ MOBILE STICKY CTA ══════════════════════════════ -->
+<div class="mobile-cta">
+  <a href="https://wa.me/919830556461?text=Hello%20I%20need%20medical%20assistance%20from%20HealthiQure." target="_blank" class="cta-wa">
+    <i class="bi bi-whatsapp"></i> Get Help Now
+  </a>
+  <a href="tel:+919830556461" class="cta-call">
+    <i class="bi bi-telephone-fill"></i> Call Us
+  </a>
 </div>
 
-<!-- ════ SCRIPTS ════ -->
+<!-- ══════════════════════════════ SCRIPTS ══════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// ── PAGE ROUTER ──
-function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-  const navEl = document.getElementById('nav-' + name);
-  if(navEl) navEl.classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-  if(name === 'testimonials') renderTestimonials();
-  setTimeout(observeFadeUps, 100);
-  // close mobile nav
-  const nc = document.getElementById('navMenu');
-  if(nc.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(nc).hide();
-}
-
-// ── FADE ON SCROLL ──
-function observeFadeUps() {
-  const els = document.querySelectorAll('.fade-up:not(.visible)');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, {threshold:0.1});
-  els.forEach(el => io.observe(el));
-}
-observeFadeUps();
-
-// ── BOOKING FORM ──
-function submitBooking() {
-  const n = document.getElementById('f-name').value.trim();
-  const p = document.getElementById('f-phone').value.trim();
-  if(!n || !p) { alert('Please fill your name and phone number.'); return; }
-  document.getElementById('bookForm').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-}
-function resetForm() {
-  document.getElementById('bookForm').style.display = 'block';
-  document.getElementById('form-success').style.display = 'none';
-  document.getElementById('bookForm').querySelectorAll('input,select,textarea').forEach(el=>el.value='');
-}
-
-// ── CONTACT FORM ──
-function submitContact() {
-  const n = document.getElementById('c-name').value.trim();
-  const m = document.getElementById('c-msg').value.trim();
-  if(!n || !m) { alert('Please fill your name and message.'); return; }
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('contact-success').style.display = 'block';
-}
-function resetContact() {
-  document.getElementById('contactForm').style.display = 'block';
-  document.getElementById('contact-success').style.display = 'none';
-}
-
-// ── TESTIMONIALS DATA ──
-const testimonials = [
-  { name:'Dorjee Wangdi', loc:'Tawang District', img:'https://i.pravatar.cc/80?img=47', stars:5, text:'My daughter had high fever and the nearest hospital is 3 hours away. ArogyaPath\'s doctor consulted us on WhatsApp the same night. Life-saving service!' },
-  { name:'Yalum Lego', loc:'West Siang', img:'https://i.pravatar.cc/80?img=32', stars:5, text:'The home visit was very affordable. The health worker came to our village, did tests and explained everything. I couldn\'t believe doctors come here now.' },
-  { name:'Pema Khandu', loc:'Lohit Valley', img:'https://i.pravatar.cc/80?img=60', stars:5, text:'For us elderly people, getting free advice from a real doctor via WhatsApp is a blessing. No more missing a week\'s work for hospital trips.' },
-  { name:'Tamar Riba', loc:'Papum Pare', img:'https://i.pravatar.cc/80?img=22', stars:5, text:'My wife had pregnancy complications. Dr. Meena guided us online at midnight. Because of ArogyaPath, my daughter was born safely.' },
-  { name:'Hage Appa', loc:'Dibang Valley', img:'https://i.pravatar.cc/80?img=11', stars:5, text:'I have diabetes and used to spend ₹3000 every time going to hospital. Now I get monthly online check-ups free and home tests at ₹800. Brilliant!' },
-  { name:'Nima Sherpa', loc:'West Kameng', img:'https://i.pravatar.cc/80?img=55', stars:5, text:'Our village has no health center. ArogyaPath sends a worker every month. Children\'s vaccinations are now done at home. This team is God-sent.' },
-  { name:'Oji Tayeng', loc:'Changlang', img:'https://i.pravatar.cc/80?img=39', stars:5, text:'I was depressed for months and too ashamed to talk to anyone. The mental wellness doctor on ArogyaPath helped me anonymously. I\'m better now.' },
-  { name:'Bini Nime', loc:'Subansiri', img:'https://i.pravatar.cc/80?img=48', stars:5, text:'The online consultation is genuinely free! I was skeptical but the doctor spent 20 minutes with me, gave a prescription, and it worked. Highly recommend.' },
-  { name:'Talo Kath', loc:'Tirap', img:'https://i.pravatar.cc/80?img=17', stars:4, text:'Good service. The booking form works well and confirmation came fast. Would love more local language support — that would make it perfect.' },
-];
-function renderTestimonials() {
-  const grid = document.getElementById('testimonialGrid');
-  if(grid.children.length > 0) return;
-  testimonials.forEach((t, i) => {
-    const col = document.createElement('div');
-    col.className = 'col-md-6 col-lg-4 fade-up';
-    col.style.transitionDelay = (i * 0.07) + 's';
-    col.innerHTML = `<div class="glass-card p-4 h-100">
-      <div class="stars mb-3">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div>
-      <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.75;margin-bottom:20px">"${t.text}"</p>
-      <div class="d-flex align-items-center gap-3">
-        <div class="avatar-ring"><img src="${t.img}" alt="${t.name}"/></div>
-        <div><div style="font-weight:600;font-size:0.9rem">${t.name}</div><div style="font-size:0.78rem;color:var(--teal)">${t.loc}</div></div>
-      </div>
-    </div>`;
-    grid.appendChild(col);
+  // ── Section padding utility
+  document.querySelectorAll('section').forEach(s => {
+    if (!s.style.padding && !s.classList.contains('hero') && !s.classList.contains('philosophy-section')) {
+      s.style.padding = '5rem 0';
+    }
   });
-  setTimeout(observeFadeUps, 50);
-}
 
-// ── AI CHATBOT ──
-const botKnowledge = {
-  'book': 'You can book a free consultation by filling the form on our Home page, or message us on WhatsApp at +91-94360-XXXXX. We confirm within 1 hour!',
-  'home visit': 'Our doorstep health visit costs just ₹800. A qualified health worker comes to your home for physical check-up, blood tests, and medication guidance. Book via the form or WhatsApp.',
-  'free': 'Yes! Online consultations are completely FREE — no charges at all. Just fill the form or WhatsApp us.',
-  'whatsapp': 'Our WhatsApp number is +91-94360-XXXXX. Send your name, village, and symptoms and a doctor will respond within 2 hours.',
-  'disease': 'We cover: Fever & Flu, Diabetes, Hypertension, Women\'s Health, Child Health, Respiratory issues, Mental Wellness, Skin conditions, Malaria, Typhoid, Joint Pain, and General check-ups.',
-  'price': 'Online consultation is FREE. Home visit is ₹800 per visit including check-up and basic tests.',
-  'contact': 'Email: care@arogyapath.in | Phone: +91-94360-XXXXX | WhatsApp: Same number, available 24/7.',
-  'doctor': 'We have 18+ certified MBBS/MD doctors covering General Medicine, Pediatrics, Women\'s Health, and Mental Wellness.',
-  'district': 'We cover 38+ districts across Arunachal Pradesh including Tawang, West Siang, Lohit, Changlang, Dibang Valley, and more.',
-  'hello': 'Namaste! 🙏 I\'m HealthBot, your ArogyaPath assistant. How can I help you today? You can ask about our services, booking, doctors, or pricing.',
-  'hi': 'Namaste! 🙏 I\'m HealthBot. Ask me anything about ArogyaPath\'s healthcare services!',
-  'fever': 'For fever, we recommend a free online consultation first. Our doctors can assess your symptoms and advise you. You can also book a home visit for ₹800 for in-person check-up.',
-};
-function getBotReply(msg) {
-  const m = msg.toLowerCase();
-  for(const [key, reply] of Object.entries(botKnowledge)) {
-    if(m.includes(key)) return reply;
-  }
-  return 'Thank you for your question! For the best answer, please WhatsApp us at +91-70021 07673 or fill our booking form. Our team typically responds within 1-2 hours. Is there anything else I can help with?';
-}
-let botOpen = false;
-function toggleBot() {
-  botOpen = !botOpen;
-  const win = document.getElementById('ai-chat-window');
-  win.classList.toggle('open', botOpen);
-  if(botOpen && document.getElementById('chat-messages').children.length === 0) {
-    addBotMsg('Namaste! 🙏 I\'m HealthBot — your ArogyaPath assistant. Ask me about our services, booking, or WhatsApp number!');
-  }
-}
-function addBotMsg(txt) {
-  const d = document.createElement('div');
-  d.className = 'msg bot'; d.textContent = txt;
-  const msgs = document.getElementById('chat-messages');
-  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
-}
-function addUserMsg(txt) {
-  const d = document.createElement('div');
-  d.className = 'msg user'; d.textContent = txt;
-  const msgs = document.getElementById('chat-messages');
-  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
-}
-function showTyping() {
-  const d = document.createElement('div');
-  d.className = 'msg bot typing-dots'; d.id = 'typingDot';
-  d.innerHTML = '<span></span><span></span><span></span>';
-  document.getElementById('chat-messages').appendChild(d);
-  document.getElementById('chat-messages').scrollTop = 99999;
-}
-function removeTyping() {
-  const t = document.getElementById('typingDot');
-  if(t) t.remove();
-}
-function sendChat() {
-  const inp = document.getElementById('chat-input');
-  const msg = inp.value.trim(); if(!msg) return;
-  addUserMsg(msg); inp.value = '';
-  showTyping();
-  document.getElementById('quickChips').style.display = 'none';
-  setTimeout(() => {
-    removeTyping();
-    addBotMsg(getBotReply(msg));
-  }, 900 + Math.random() * 600);
-}
-function sendQuick(msg) {
-  document.getElementById('chat-input').value = msg;
-  sendChat();
-}
+  // ── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-// ── DISEASE TAG TOGGLE ──
-document.querySelectorAll('.disease-tag').forEach(t => {
-  t.addEventListener('click', () => t.classList.toggle('active'));
-});
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// ── NAVBAR SCROLL ──
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('mainNav');
-  if(window.scrollY > 40) nav.style.background = 'rgba(10,22,40,0.95)';
-  else nav.style.background = 'rgba(10,22,40,0.7)';
-});
+  // ── Counter animation
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        const duration = 1800;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            el.textContent = target.toLocaleString();
+            clearInterval(timer);
+          } else {
+            el.textContent = Math.floor(current).toLocaleString();
+          }
+        }, 16);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
 
-// Initial fade-up
-setTimeout(observeFadeUps, 200);
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+  // ── Form submit → WhatsApp Lead (real lead capture)
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const inputs = this.querySelectorAll('input');
+    const name = inputs[0].value.trim();
+    const phone = inputs[1].value.trim();
+    const location = inputs[2].value.trim();
+    const service = this.querySelector('select').value || 'Not specified';
+    const message = this.querySelector('textarea').value.trim();
+
+    const text = `Hello HealthiQure, I need medical assistance:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Location: ${location}\n🏥 Service: ${service}\n📝 Problem: ${message}`;
+    const url = `https://wa.me/919830556461?text=${encodeURIComponent(text)}`;
+
+    // Show brief confirmation then open WhatsApp
+    const btn = this.querySelector('.btn-submit');
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Opening WhatsApp...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      window.open(url, '_blank');
+      document.getElementById('successMsg').style.display = 'block';
+      btn.style.display = 'none';
+      this.reset();
+    }, 900);
+  });
+
+  // ── Navbar active link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      if (link.getAttribute('href') === '#' + current) {
+        link.style.color = 'var(--text-primary)';
+      }
+    });
+  });
 </script>
 </body>
 </html>
