@@ -1205,7 +1205,14 @@ function calcHeart(){
   res.className=`t-result show ${cls}`;
 }
 
-// ── Diabetes BMI auto-fill
+// ── Close navbar on outside click
+document.addEventListener('click',function(e){
+  const nav=document.getElementById('nav');
+  const toggler=document.querySelector('.navbar-toggler');
+  if(nav&&nav.classList.contains('show')&&!nav.contains(e.target)&&!toggler.contains(e.target)){
+    toggler.click();
+  }
+});
 function calcDbBMI(){
   const w=parseFloat(document.getElementById('db-weight').value);
   const h=parseFloat(document.getElementById('db-height').value);
