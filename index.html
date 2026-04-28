@@ -67,9 +67,9 @@
       transition:background 0.3s;
     }
     .navbar-brand{display:flex;align-items:center;gap:0.6rem;text-decoration:none;}
-    .logo-3d{width:68px;height:68px;display:flex;align-items:center;justify-content:center;transition:transform 0.2s;overflow:visible;background:transparent;}
+    .logo-3d{width:55px;height:55px;display:flex;align-items:center;justify-content:center;transition:transform 0.2s;overflow:visible;background:transparent;}
     .logo-3d:hover{transform:scale(1.07);}
-    .logo-3d img{width:68px;height:68px;object-fit:contain;}
+    .logo-3d img{width:55px;height:55px;object-fit:contain;}
     .brand-text{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;color:var(--text);letter-spacing:-0.3px;line-height:1.1;}
     .brand-tag{font-family:'Poppins',sans-serif;font-size:0.62rem;font-weight:600;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;line-height:1;margin-top:2px;}
     .brand-text span{color:var(--red);}
@@ -557,7 +557,34 @@
       35%{transform:rotate(0deg);}
     }
 
-    /* ── MOBILE CTA ── */
+    /* ── TICKER BAR ── */
+    .ticker-bar{
+      width:100%;background:linear-gradient(90deg,rgba(14,165,233,0.08),rgba(14,165,233,0.04));
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;overflow:hidden;height:34px;
+      position:relative;z-index:999;
+    }
+    .ticker-label{
+      flex-shrink:0;background:var(--accent);color:#fff;
+      font-size:0.68rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+      padding:0 0.9rem;height:100%;display:flex;align-items:center;gap:0.4rem;white-space:nowrap;
+    }
+    .ticker-track{flex:1;overflow:hidden;position:relative;}
+    .ticker-content{
+      display:flex;gap:3rem;align-items:center;
+      white-space:nowrap;
+      animation:ticker 38s linear infinite;
+    }
+    .ticker-content span{
+      font-size:0.75rem;color:var(--text2);flex-shrink:0;
+    }
+    @keyframes ticker{
+      0%{transform:translateX(0);}
+      100%{transform:translateX(-50%);}
+    }
+    .ticker-bar:hover .ticker-content{animation-play-state:paused;}
+
+    
     .mob-cta{
       display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;
       padding:0.75rem 1rem;background:rgba(6,10,18,0.97);
@@ -620,6 +647,27 @@
   </div>
 </nav>
 
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <div class="ticker-label"><i class="bi bi-broadcast"></i> Live</div>
+  <div class="ticker-track">
+    <div class="ticker-content">
+      <span>🏥 HealthiQure™ now serving patients across Assam, Arunachal Pradesh &amp; Meghalaya</span>
+      <span>❤️ Free diabetes risk screening available — WhatsApp us now</span>
+      <span>📞 24/7 medical assistance: +91 70990 93751</span>
+      <span>🩺 New specialist doctors added to our network — Cardiology, Orthopaedics &amp; Neurology</span>
+      <span>🚀 Franchise opportunities now open across Northeast India</span>
+      <span>✅ Recognized by AP Innovation &amp; Investment Park</span>
+      <span>🏥 HealthiQure™ now serving patients across Assam, Arunachal Pradesh &amp; Meghalaya</span>
+      <span>❤️ Free diabetes risk screening available — WhatsApp us now</span>
+      <span>📞 24/7 medical assistance: +91 70990 93751</span>
+      <span>🩺 New specialist doctors added to our network — Cardiology, Orthopaedics &amp; Neurology</span>
+      <span>🚀 Franchise opportunities now open across Northeast India</span>
+      <span>✅ Recognized by AP Innovation &amp; Investment Park</span>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div><div class="hero-grid"></div>
@@ -668,7 +716,7 @@
       <div class="col-lg-6 offset-lg-1 fu">
         <div class="ab-feat"><div class="ab-fi"><i class="bi bi-phone-vibrate"></i></div><div><h6>Phygital Model</h6><p>Seamlessly blending physical presence with digital technology to deliver care where it's needed most.</p></div></div>
         <div class="ab-feat"><div class="ab-fi"><i class="bi bi-diagram-3"></i></div><div><h6>Ecosystem Approach</h6><p>Connecting patients, doctors, hospitals, diagnostics, and pharmacies into one unified platform.</p></div></div>
-        <div class="ab-feat"><div class="ab-fi" style="background:var(--red-dim);color:var(--red);"><i class="bi bi-geo-alt-fill"></i></div><div><h6>Remote Region Focus</h6><p>Deep focus on India's Northeast — bringing quality care to communities historically underserved by healthcare systems.</p></div></div>
+        <div class="ab-feat"><div class="ab-fi"><i class="bi bi-geo-alt-fill"></i></div><div><h6>Remote Region Focus</h6><p>Deep focus on India's Northeast — bringing quality care to communities historically underserved by healthcare systems.</p></div></div>
         <div class="ab-feat"><div class="ab-fi"><i class="bi bi-cpu"></i></div><div><h6>Technology-Driven</h6><p>Leveraging digital tools to enable faster diagnosis, better doctor decision-making, and improved patient outcomes.</p></div></div>
       </div>
     </div>
@@ -715,7 +763,7 @@
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-4 fu"><div class="svc-card"><div class="svc-ic"><i class="bi bi-person-heart"></i></div><h5>Patient Care &amp; Assistance</h5><p>End-to-end support including doctor selection, appointment scheduling, navigation, medical history management, and a dedicated care team.</p></div></div>
-      <div class="col-md-6 col-lg-4 fu"><div class="svc-card"><div class="svc-ic" style="color:var(--red);background:var(--red-dim);"><i class="bi bi-clipboard2-pulse"></i></div><h5>Diagnostics &amp; Screening</h5><p>ECG, laboratory testing, imaging services, and timely reports. Accurate diagnosis is the foundation of effective treatment.</p></div></div>
+      <div class="col-md-6 col-lg-4 fu"><div class="svc-card"><div class="svc-ic"><i class="bi bi-clipboard2-pulse"></i></div><h5>Diagnostics &amp; Screening</h5><p>ECG, laboratory testing, imaging services, and timely reports. Accurate diagnosis is the foundation of effective treatment.</p></div></div>
       <div class="col-md-6 col-lg-4 fu"><div class="svc-card"><div class="svc-ic"><i class="bi bi-camera-video"></i></div><h5>Telemedicine</h5><p>Breaking geographical barriers to expert care. Consult with experienced specialists and access reputed hospitals remotely.</p></div></div>
       <div class="col-md-6 col-lg-4 fu"><div class="svc-card"><div class="svc-ic"><i class="bi bi-hospital"></i></div><h5>Hospital Coordination</h5><p>Smooth treatment journeys with admission support, treatment planning, travel &amp; accommodation, and on-ground coordination.</p></div></div>
       <div class="col-md-6 col-lg-4 fu"><div class="svc-card"><div class="svc-ic"><i class="bi bi-tools"></i></div><h5>Medical Equipment</h5><p>Advanced diagnostic devices and technology-enabled tools to strengthen infrastructure for clinics in remote areas.</p></div></div>
